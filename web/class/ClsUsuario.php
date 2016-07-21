@@ -38,22 +38,29 @@
 		</script>';
                 }else{              
                 //se define el Query   
-                $query = "INSERT INTO usuarios(usu_nom,usu_ape,usu_username,usu_pass,usu_activo,cat_cod) VALUES ('$nombreA','$apellidoA','$usernameA',md5('$passwordA'),'t',$categoriaA);";
+                $query = "INSERT INTO usuarios(usu_nom,usu_ape,usu_username,usu_pass,usu_estado,cat_cod,usu_fecha)
+                VALUES ('$nombreA','$apellidoA','$usernameA',md5('$passwordA'),'t',$categoriaA,now());";
                 //ejecucion del query
-                $ejecucion = pg_query($query)or die('Error al realizar la carga ALTA USUARIO'.$query);
+                $ejecucion = pg_query($query)or die('<script type="text/javascript">
+		alert("Error al inserta el usuario. Err(108):'.$query.'");
+                window.location="http://localhost/SGR/web/usuarios/ABMusuario.php";
+		</script>');
                 $query = '';
                 header("Refresh:0; url=http://localhost/SGR/web/usuarios/ABMusuario.php");
                 }
             }
         //si es Modificar    
         if(isset($_POST['modificar'])){
-            
-            pg_query("update usuarios set usu_nom='$nombreM',usu_ape= '$apellidoM',usu_username='$usernameM',usu_pass=md5('$passwordM'),estado='$activoM',cat_cod=$categoriaM WHERE usu_cod=$codigoModif");
-            $query = '';
+            $query = "update usuarios set usu_nom='$nombreM',usu_ape= '$apellidoM',usu_username='$usernameM',usu_pass=md5('$passwordM'),usu_estado='$activoM',cat_cod=$categoriaM WHERE usu_cod=$codigoModif";
+            $ejecucion = pg_query($query) or die('<script type="text/javascript">
+            alert("Error al inserta el usuario. Err(108):'.$query.$codigoModif.'");
+            window.location="http://localhost/SGR/web/usuarios/ABMusuario.php";
+            </script>');
+           
             header("Refresh:0; url=http://localhost/SGR/web/usuarios/ABMusuario.php");
         }
         //Si es Eliminar
         if(isset($_POST['borrar'])){
-            pg_query("update usuarios set estado='f' WHERE usu_cod=$codigoElim");
+            pg_query("update usuarios set usu_estado='f' WHERE usu_cod=$codigoElim");
             header("Refresh:0; url=http://localhost/SGR/web/usuarios/ABMusuario.php");
 	}
