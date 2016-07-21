@@ -16,7 +16,7 @@ $catego=  $_SESSION["categoria_usuario"];
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SGP INTN- Usuarios</title>
+    <title>SGR INTN- Usuarios</title>
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
@@ -61,13 +61,13 @@ $catego=  $_SESSION["categoria_usuario"];
 			var nombre=document.getElementById("dataTables-example").rows[indi+1].cells[1].innerText;
 			var apellido=document.getElementById("dataTables-example").rows[indi+1].cells[2].innerText;
                         var username=document.getElementById("dataTables-example").rows[indi+1].cells[3].innerText;
-			var password=document.getElementById("dataTables-example").rows[indi+1].cells[4].innerText;
+			
                         //var estado=document.getElementById("dataTables-example").rows[indi+1].cells[5].innerText;
                         document.getElementById("txtCodigo").value = codusuario;
                         document.getElementById("txtNombre").value = nombre;
 			document.getElementById("txtApellido").value = apellido;
 			document.getElementById("txtUsername").value = username;
-                        document.getElementById("txtPassword").value = password;
+                        
 			});
 		};
 		function eliminar(codusuario){
@@ -127,7 +127,7 @@ $catego=  $_SESSION["categoria_usuario"];
                     $result = pg_query($query) or die ("Error al realizar la consulta");
                     while($row1 = pg_fetch_array($result))
                     {
-                        $estado=$row1["estado"];
+                        $estado=$row1["usu_estado"];
                         if($estado=='t'){$estado='Activo';}else{$estado='Inactivo';}
                         echo "<tr><td style='display:none'>".$row1["usu_cod"]."</td>";
                         echo "<td>".$row1["usu_nom"]."</td>";
@@ -208,7 +208,7 @@ $catego=  $_SESSION["categoria_usuario"];
                                                 <?php
                                                 //esto es para mostrar un select que trae datos de la BDD
                                                 conexionlocal();
-                                                $query = "Select cat_cod,cat_nom from categorias where estado='t' ";
+                                                $query = "Select cat_cod,cat_nom from categoria where cat_estado='t' ";
                                                 $resultadoSelect = pg_query($query);
                                                 while ($row = pg_fetch_row($resultadoSelect)) {
                                                 echo "<option value=".$row[0].">";
@@ -288,7 +288,7 @@ $catego=  $_SESSION["categoria_usuario"];
                                                 <?php
                                                 //esto es para mostrar un select que trae datos de la BDD
                                                 conexionlocal();
-                                                $query = "Select cat_cod,cat_nom from categorias where estado='t' ";
+                                                $query = "Select cat_cod,cat_nom from categoria where cat_estado='t' ";
                                                 $resultadoSelect = pg_query($query);
                                                 while ($row = pg_fetch_row($resultadoSelect)) {
                                                 echo "<option value=".$row[0].">";
