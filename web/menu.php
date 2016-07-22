@@ -162,7 +162,7 @@
                             <a href="#"><i class="fa  fa-home "></i> DEPARTAMENTOS<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://localhost/SGR/web/departamentos/ABMdepartamento">Registros de Departamentos</a>
+                                    <a href="http://localhost/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php">Registros de Departamentos</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
