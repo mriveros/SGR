@@ -31,37 +31,41 @@ $codusuario=  $_SESSION["codigo_usuario"];
     
         //Si es agregar
         if(isset($_POST['agregar'])){
-            if(func_existeDato($nombreA, 'producto', 'pro_nom')==true){
+            if(func_existeDato($nombreA, 'producto', 'pro_nombre')==true){
                 echo '<script type="text/javascript">
 		alert("El Producto ya existe. Ingrese otro Producto.");
                 window.location="http://localhost/SGR/web/productos/ABMproducto.php";
 		</script>';
                 }else{              
                 //se define el Query   
-                $query = "INSERT INTO producto(pro_nom,pro_marca,pro_fecha_ven,pro_fecha,presen_cod,pro_estado)"
-                    . "VALUES ('$nombreA','$marcaA','$FechaVenceA',now(),$presentacionA,'t');";
+                $query = "INSERT INTO producto(pro_nombre,mar_cod,pro_fecha_ven,pro_fecha,presen_cod,pro_estado)"
+                    . "VALUES ('$nombreA',$marcaA,'$FechaVenceA','now()',$presentacionA,'t');";
                 //ejecucion del query
-                $ejecucion = pg_query($query)or die('Error al realizar la carga');
-                $query = '';
+                $ejecucion = pg_query($query)or die('<script type="text/javascript">
+		alert("Error al inserta el Producto. Err(108):'.$query.'");
+                window.location="http://localhost/SGR/web/productos/ABMproducto.php";
+		</script>');
+               
                 header("Refresh:0; url=http://localhost/SGR/web/productos/ABMproducto.php");
                 }
             }
         //si es Modificar    
         if(isset($_POST['modificar'])){
-            
-            pg_query("update producto set pro_nom='$nombreM',"
-                    . "pro_marca= '$marcaM',"
-                    . "pro_precio= '$precioM',"
-                    . "fecha_ven= '$FechaVenceA',"
-                    . "presen_cod= $presentacionM',"
+             $query = "update producto set pro_nombre='$nombreM',"
+                    . "mar_cod= $marcaM,"
+                    . "pro_fecha_ven= '$fecha_venceM',"
+                    . "presen_cod= $presentacionM,"
                     . "pro_estado='$estadoM'"
-                    . "WHERE pro_cod=$codigoModif");
-            $query = '';
+                    . "WHERE pro_cod=$codigoModif";
+            $ejecucion = pg_query($query)or die('<script type="text/javascript">
+		alert("Error al inserta el Producto. Err(108):'.$query.'");
+                window.location="http://localhost/SGR/web/productos/ABMproducto.php";
+		</script>');
             header("Refresh:0; url=http://localhost/SGR/web/productos/ABMproducto.php");
         }
         //Si es Eliminar
         if(isset($_POST['borrar'])){
-            pg_query("update productos set pro_estado='f' WHERE pro_cod=$codigoElim");
+            pg_query("update producto set pro_estado='f' WHERE pro_cod=$codigoElim");
             header("Refresh:0; url=http://localhost/SGR/web/productos/ABMproducto.php");
             
 	}

@@ -57,7 +57,7 @@ $catego=  $_SESSION["categoria_usuario"];
 		function modificar(codigo){
 			$('tr').click(function() {
 			indi = $(this).index();
-                       	var descripcion=document.getElementById("dataTables-example").rows[indi+1].cells[1].innerText;
+                       	var descripcion=document.getElementById("dataTables-example").rows[indi+1].cells[2].innerText;
                         //var estado=document.getElementById("dataTables-example").rows[indi+1].cells[5].innerText;
                         document.getElementById("txtCodigo").value = codigo;
                         document.getElementById("txtDescripcionM").value = descripcion;
@@ -107,6 +107,7 @@ $catego=  $_SESSION["categoria_usuario"];
                                     <thead>
                                         <tr class="success">
                                             <th style='display:none'>Codigo</th>
+                                            <th style='display:none'>Codigo</th>
                                             <th>Departamento/Unidad</th>
                                             <th>Dependencia</th>
                                             <th>Estado</th>
@@ -115,7 +116,8 @@ $catego=  $_SESSION["categoria_usuario"];
                                     </thead>
                                     <tbody>
                     <?php
-                    $query = "select * from departamentos_unidad depuni, dependencia dep where depuni.depen_cod=dep.depen_cod";
+                    $query = "select depuni.depar_cod,dep.depen_cod,depuni.depar_desc,dep.depen_desc,depuni.depar_estado from departamentos_unidad depuni, dependencia dep 
+                    where depuni.depen_cod=dep.depen_cod";
                     $result = pg_query($query) or die ("Error al realizar la consulta");
                     while($row1 = pg_fetch_array($result))
                     {
@@ -124,7 +126,7 @@ $catego=  $_SESSION["categoria_usuario"];
                         echo "<tr><td style='display:none'>".$row1["depar_cod"]."</td>";
                         echo "<td style='display:none'>".$row1["depend_cod"]."</td>";
                         echo "<td>".$row1["depar_desc"]."</td>";
-                         echo "<td>".$row1["depend_desc"]."</td>";
+                        echo "<td>".$row1["depen_desc"]."</td>";
                         echo "<td>".$estado."</td>";
                         echo "<td>";?>
                         

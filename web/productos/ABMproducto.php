@@ -58,7 +58,7 @@ $catego=  $_SESSION["categoria_usuario"];
 		function modificar(codigo){
 			$('tr').click(function() {
 			indi = $(this).index();
-                        var nombre=document.getElementById("dataTables-example").rows[indi+1].cells[1].innerText;
+                        var nombre=document.getElementById("dataTables-example").rows[indi+1].cells[2].innerText;
                        	var marca=document.getElementById("dataTables-example").rows[indi+1].cells[2].innerText;
 			
                        
@@ -123,7 +123,7 @@ $catego=  $_SESSION["categoria_usuario"];
                                     </thead>
                                     <tbody>
                     <?php
-                    $query = "select * from producto pro, presentacion pre  where pro.presen_cod=pre.presen_cod";
+                    $query = "select * from producto pro, presentacion pre, marca mar where pro.presen_cod=pre.presen_cod and mar.mar_cod=pro.mar_cod";
                     $result = pg_query($query) or die ("Error al realizar la consulta");
                     while($row1 = pg_fetch_array($result))
                     {
@@ -132,8 +132,8 @@ $catego=  $_SESSION["categoria_usuario"];
                         if($estado=='t'){$estado='Activo';}else{$estado='Inactivo';}
                         echo "<tr><td style='display:none'>".$row1["pro_cod"]."</td>";
                         echo "<td style='display:none'>".$row1["presen_cod"]."</td>";
-                        echo "<td>".$row1["pro_nom"]."</td>";
-                        echo "<td>".$row1["pro_marca"]."</td>";
+                        echo "<td>".$row1["pro_nombre"]."</td>";
+                        echo "<td>".$row1["mar_desc"]."</td>";
                         echo "<td>".$row1["pro_fecha_ven"]."</td>";
                         echo "<td>".$row1["presen_desc"]."</td>";
                         echo "<td>".$estado."</td>";
@@ -286,12 +286,12 @@ $catego=  $_SESSION["categoria_usuario"];
                                         <div class="form-group">
                                             <label  class="col-sm-2 control-label" for="input01">Fecha Vence</label>
                                             <div class="col-sm-10">
-                                                <input class="datepicker" type="datetime" name="txtFechaVenceM" class="form-control" id="txtFechaVenceM" required="true" />
+                                                <input  type="date" name="txtFechaVenceM" class="form-control" id="txtFechaVenceM" required="true" />
                                             </div>
 					</div>
                                       
                                         <div class="form-group">
-                                            <label  class="col-sm-2 control-label" for="input01">Presentacion</label>
+                                            <label  class="col-sm-2 control-label" for="input01">Presentación</label>
                                             <div class="col-sm-10">
                                            <select name="txtPresentacionM" class="form-control" id="txtPresentacionM" required="true">
                                                 <?php

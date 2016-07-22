@@ -27,7 +27,7 @@ conexionlocal();
     
         //Si es agregar
         if(isset($_POST['agregar'])){
-            if(func_existeDato($descripcionA, 'departamento_unidad', 'depar_desc')==true){
+            if(func_existeDato($descripcionA, 'departamentos_unidad', 'depar_desc')==true){
                 echo '<script type="text/javascript">
 		alert("El Departamento/UNidad ya existe. Ingrese otro Departamento/Unidad.");
                 window.location="http://localhost/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php";
@@ -46,7 +46,7 @@ conexionlocal();
             }
         //si es Modificar    
         if(isset($_POST['modificar'])){
-            $query = "update departamentos_unidad set depar_desc='$descripcionM',depend_cod=$dependenciaM,depen_estado='$estadoM' WHERE depar_cod=$codigoModif";
+            $query = "update departamentos_unidad set depar_desc='$descripcionM',depen_cod=$dependenciaM,depar_estado='$estadoM' WHERE depar_cod=$codigoModif";
             $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al insertar el Departamento/Unidad. Err(108):'.$query.'");
                 window.location="http://localhost/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php";
