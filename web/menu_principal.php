@@ -201,13 +201,22 @@
                             <!-- /.nav-second-level -->
                         </li>
                          <li>
-                            <a href="#"><i class="fa  fa-cubes"></i> PRESENTACION<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa  fa-cubes"></i> PRESENTACIÓN<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="http://localhost/SGR/web/presentacion/ABMpresentacion.php">Registros de Presentación</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa  fa-magic"></i> MARCAS<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="http://localhost/SGR/web/marcas/ABMmarca.php">Registros de Marcas</a>
+                                </li>
+                                
+                            </ul> 
                         </li>
                         <li>
                             <a href="#"><i class="fa  fa-bank"></i> PRODUCTOS<span class="fa arrow"></span></a>
