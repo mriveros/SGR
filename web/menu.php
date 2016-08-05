@@ -227,7 +227,7 @@
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="http://localhost/SGR/web/stock/registrar_stock.php">Gestión de Stock</a>
-                                    <a href="http://localhost/SGR/web/stock/registrar_stock.php">Gestión de Almacenes</a>
+                                    <a href="http://localhost/SGR/web/stock/gestion_almacen.php">Gestión de Almacenes</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
