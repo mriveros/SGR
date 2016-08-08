@@ -242,8 +242,7 @@
                             <a href="#"><i class="fa  fa-database"></i>  REGISTRAR RETIROS<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                 
-                                    <a href="http://localhost/SGR/web/registrar_retiros/registrar_retiros.php">Retiro de Reactivos</a>
+                                       <a href="http://localhost/SGR/web/retiros/registrar_retiros.php">Retiro de Reactivos</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
