@@ -265,4 +265,16 @@
                return $key;
                
         }
+        function consultardetalle(){
+            $query = "Select max(stock_cod) from stock;";
+            $resultado=pg_query($query);
+            $row=  pg_fetch_array($resultado);
+            $codcabecera=$row[0];
+            
+            $query = pg_query("select count(stock_cod) from stock_detalle where stock_cod=$codcabecera");
+            $row1 = pg_fetch_array($query);
+            return $row1[0];
+        
+            
+        }
 

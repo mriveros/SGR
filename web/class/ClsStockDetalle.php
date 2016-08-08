@@ -11,7 +11,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
     //Datos del Form Agregar
     if  (empty($_POST['txtCantidadA'])){$cantidadA='';}else{ $cantidadA = $_POST['txtCantidadA'];}
     if  (empty($_POST['txtProductoA'])){$productoA='';}else{ $productoA = $_POST['txtProductoA'];}
-    if  (empty($_POST['txtStockactualA'])){$actualA='';}else{ $actualA= $_POST['txtStockactualA'];}
+    
     if  (empty($_POST['txtStockminimoA'])){$minimoA='';}else{ $minimoA= $_POST['txtStockminimoA'];}
     //DAtos para el Eliminado Logico
     if  (empty($_POST['txtCodigoE'])){$codigoElim=0;}else{$codigoElim=$_POST['txtCodigoE'];}
@@ -23,7 +23,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 $codcabecera=$row[0];
                 //se define el Query   
                 $query = "INSERT INTO stock_detalle(stockdet_cantidad,stockdet_actual,stockdet_minimo,pro_cod,stock_cod)"
-                . "VALUES ($cantidadA,$actualA,$minimoA,$productoA,$codcabecera);";
+                . "VALUES ($cantidadA,$cantidadA,$minimoA,$productoA,$codcabecera);";
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al insertar el Stock Detalle. Err(108):'.$query.'");

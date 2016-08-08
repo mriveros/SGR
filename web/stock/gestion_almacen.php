@@ -108,7 +108,7 @@ $reg = $_POST['registrar'];
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $query = "Select * from stock";
+                                            $query = "Select * from stock order by stock_fecha asc";
                                             $result = pg_query($query) or die("Error al realizar la consulta");
                                             while ($row1 = pg_fetch_array($result)) {
                                                 echo "<tr><td style='display:none'>" . $row1["stock_cod"] . "</td>";

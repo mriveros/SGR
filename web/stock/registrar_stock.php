@@ -63,12 +63,33 @@ $reg = $_POST['registrar'];
                 var descripcion = document.getElementById("txtDescripcionA").value;
                 var licitacion = document.getElementById("txtLicitacionA").value;
                 var lote = document.getElementById("txtLoteA").value;
-                            $.ajax({type: "GET",url:"../class/ClsRegistrarCabecera.php",
+                if (descripcion=="")
+                {
+                    alert("Se debe llenar todos los campos");
+                    window.location="http://localhost/SGR/web/stock/registrar_stock.php";
+                }
+                else if(licitacion=="")
+                {
+                    
+                    alert("Se debe llenar todos los campos");
+                    window.location="http://localhost/SGR/web/stock/registrar_stock.php";
+                }
+                else if(lote=="")
+                {
+                    alert("Se debe llenar todos los campos");
+                    window.location="http://localhost/SGR/web/stock/registrar_stock.php";
+                }
+                else{
+                   $.ajax({type: "GET",url:"../class/ClsRegistrarCabecera.php",
                                 data:"descripcion="+descripcion+"&licitacion="+licitacion+"&lote="+lote,
                                 success:function(msg){
                             $("#").fadeIn("slow",function(){
                             $("#").html(msg);
-                            })}})
+                            })}})  
+                    
+                }
+                
+                           
                         
                 }
         </script>
@@ -120,7 +141,7 @@ $reg = $_POST['registrar'];
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $query = "Select * from stock";
+                                            $query = "Select * from stock order by stock_cod DESC";
                                             $result = pg_query($query) or die("Error al realizar la consulta");
                                             while ($row1 = pg_fetch_array($result)) {
                                                 echo "<tr><td style='display:none'>" . $row1["stock_cod"] . "</td>";
@@ -187,6 +208,7 @@ $reg = $_POST['registrar'];
                                 </div>
                             </div>
                             <div class="modal-footer">
+                                <button type="reset" onclick="location.reload();" class="btn btn-success" data-dismiss="modal">Guardar</button>
                                 <button type="reset" onclick="location.reload();" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
                                 <a  class="btn btn-info" onclick="guardarCabecera()" data-toggle="modal" data-target="#modalprueba" role="button">Agregar Detalle</a>
 

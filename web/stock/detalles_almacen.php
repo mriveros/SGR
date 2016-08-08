@@ -98,9 +98,10 @@ $catego=  $_SESSION["categoria_usuario"];
                                             <th style='display:none'>Codigo</th>
                                             <th>Descripción</th>
                                             <th>Producto</th>
+                                             <th>Cantidad</th>
                                             <th>Stock Minimo</th>
                                             <th>Stock Actual</th>
-                                            <th>Cantidad</th>
+                                           
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -116,9 +117,10 @@ $catego=  $_SESSION["categoria_usuario"];
                         echo "<tr><td style='display:none'>".$row1["stockdet_cod"]."</td>";
                         echo "<td>".$row1["stock_desc"]."</td>";
                         echo "<td>".$row1["pro_nombre"]."</td>";
+                        echo "<td>".$row1["stockdet_cantidad"]."</td>";
                         echo "<td>".$row1["stockdet_minimo"]."</td>";
                         echo "<td>".$row1["stockdet_actual"]."</td>";
-                        echo "<td>".$row1["stockdet_cantidad"]."</td>";
+                       
                         echo"</tr>";
                     }
                     pg_free_result($result);

@@ -42,12 +42,13 @@
     
     </script>
 	<script type="text/javascript">
-//		function Redirigir(){
-//			window.location="http://localhost/SGR/web/stock/registrar_stock.php";
-//		};
+		/*function Redirigir(){
+			window.location="http://localhost/SGR/web/stock/registrar_stock.php";
+		};
+                */
                 function eliminar(codigo){
-//                    var codigo=document.getElementById("dataTables-example").rows[indi+1].cells[0].innerHTML;
-//                    alert(codigo);
+                    var codigo=document.getElementById("dataTables-example").rows[indi+1].cells[0].innerHTML;
+                    alert(codigo);
 			document.getElementById("txtCodigoE").value = codigo;
 		};      
 	</script>
@@ -81,30 +82,32 @@
                                             <th style='display:none'>Codigo</th>
                                             <th>Descripción</th>
                                             <th>Producto</th>
+                                            <th>Cantidad</th>
                                             <th>Stock Minimo</th>
                                             <th>Stock Actual</th>
-                                            <th>Cantidad</th>
                                             <th>Borrar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                    <?php
-                     $query = "Select max(stock_cod) from stock;";
+                    <?php   
+                    
+                    $query = "Select COALESCE (max(stock_cod),0)from stock";
                     $resultado=pg_query($query);
                     $row=  pg_fetch_array($resultado);
                     $codcabecera=$row[0];
+                    
                     $query = "select stockdet_cod,stock_desc,pro_nombre,stockdet_minimo,stockdet_actual,stockdet_cantidad from producto,stock,stock_detalle where 
-                    stock.stock_cod=stock_detalle.stock_cod and producto.pro_cod=stock_detalle.pro_cod";
+                    stock.stock_cod=stock_detalle.stock_cod and producto.pro_cod=stock_detalle.pro_cod and stock.stock_cod=$codcabecera";
                     $result = pg_query($query) or die ("Error al realizar la consulta");
                     while($row1 = pg_fetch_array($result))
                     {
-                        
                         echo "<tr><td style='display:none'>".$row1["stockdet_cod"]."</td>";
                         echo "<td>".$row1["stock_desc"]."</td>";
                         echo "<td>".$row1["pro_nombre"]."</td>";
+                        echo "<td>".$row1["stockdet_cantidad"]."</td>";
                         echo "<td>".$row1["stockdet_minimo"]."</td>";
                         echo "<td>".$row1["stockdet_actual"]."</td>";
-                        echo "<td>".$row1["stockdet_cantidad"]."</td>";
+                       
                         echo "<td>";?>
                         <a onclick='eliminar(<?php echo $row1["stockdet_cod"];?>)' class="btn btn-danger btn-xs active" data-toggle="modal" data-target="#modalbor" role="button">Borrar</a>
                         <?php
@@ -115,9 +118,9 @@
                                     </tbody>
                                 </table>
                                  <a class="btn btn-primary" data-toggle="modal" data-target="#modalagr" role="button">Nuevo Detalle</a>
-                                 <form action='http://localhost/SGR/web/stock/registrar_stock.php' method='post'>
-                                     <br><br><button type="submit" name="registar" class="btn btn-info">Guardar detalle</button>
-                                </form>
+                                 
+                                 <button type="submit" onclick="location.reload();" name="registar" class="btn btn-info">Guardar detalle</button>
+                                
                             </div>		
                         </div>
                         <!-- /.panel-body -->
@@ -167,12 +170,6 @@
                                                     }
                                                     ?>
                                                 </select>
-                                            </div>
-					</div>
-                                        <div class="form-group">
-                                            <label  class="col-sm-2 control-label" for="input01">Stock Actual</label>
-                                            <div class="col-sm-10">
-                                                <input type="number" name="txtStockactualA" class="form-control" id="txtStockactualA" placeholder="ingrese stock actual" required />
                                             </div>
 					</div>
                                         <div class="form-group">
