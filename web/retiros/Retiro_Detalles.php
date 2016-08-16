@@ -144,7 +144,7 @@
             
 				<!-- Modal Body -->
 				<div class="modal-body">
-                                    <form  autocomplete="off" class="form-horizontal" name="agregarform" action="../class/ClsStockDetalle.php" method="post" role="form">
+                                    <form  autocomplete="off" class="form-horizontal" name="agregarform" action="../class/ClsRetiroDetalle.php" method="post" role="form">
 						
                                         <div class="form-group">
                                             <label  class="col-sm-2 control-label" for="input01">Cantidad</label>
@@ -159,7 +159,7 @@
                                                     <?php
                                                     //esto es para mostrar un select que trae datos de la BDD
                                                     conexionlocal();
-                                                    $query = "Select pro_cod,pro_nombre from producto where pro_estado='t'";
+                                                    $query = "Select pro_cod,pro_nombre from producto pro,stock_det where pro_estado='t'";
                                                     $resultadoSelect = pg_query($query);
                                                     while ($row = pg_fetch_row($resultadoSelect)) {
                                                         echo "<option value=" . $row[0] . ">";
