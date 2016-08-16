@@ -63,7 +63,6 @@ if (!isset($_SESSION['codigo_usuario']))
                 var observacion = document.getElementById("txtObservacionA").value;
                 var encargado = document.getElementById("txtEncargadoA").value;
                 var departamento = document.getElementById("txtDepartamentoA").value;
-                
                 if (observacion=="")
                 {
                     alert("Se debe llenar todos los campos");
