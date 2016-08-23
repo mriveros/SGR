@@ -245,6 +245,12 @@
                                        <a href="http://localhost/SGR/web/retiros/registrar_retiros.php">Retiro de Reactivos</a>
                                 </li>
                             </ul>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                 
+                                    <a href="http://localhost/SGR/web/retiros/detalle_retiros.php">Detalle Retiro de Reactivos</a>
+                                </li>
+                            </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>

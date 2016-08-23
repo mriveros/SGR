@@ -7,16 +7,33 @@ if (!isset($_SESSION['codigo_usuario']))
 
  include '../funciones.php';
  conexionlocal();
+ if  (empty($_POST['txtCodigoE'])){$codigoElim=0;}else{$codigoElim=$_POST['txtCodigoE'];}
  
- if  (empty($_GET['observacion'])){$observacion=0;}else{$observacion=$_GET['observacion'];}
- if  (empty($_GET['encargado'])){$encargado=0;}else{$encargado=$_GET['encargado'];}
- if  (empty($_GET['departamento'])){$departamento=0;}else{$departamento=$_GET['departamento'];}
  
- $query = "INSERT INTO retiro(reti_fecha,reti_obser,usu_cod,en_cod,depar_cod)"
-                    . "VALUES ('now()','$observacion',$codigo_usuario,$encargado,$departamento);";
-                //ejecucion del query
-$ejecucion = pg_query($query)or die('<script type="text/javascript">
-		alert("Error al inserta la Cabecera Stock. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/stock/registrar_stock.php";
-		</script>');
+if(isset($_POST['borrar'])){
+            //Creamos la rutina para recuperar todos los detalles, devolver al stock que pertenece y borrar.
+            
+            //obtenemos los codigos de detalles del stock
+            $query = " select stockdet_cod from retiro_detalle where reti_cod=$codigoElim";
+            $consulta=pg_exec($query) or die ($query);
+            $numregs=pg_numrows($consulta);
+            $i=0;
+            while($i<$numregs)
+            {
+                $codigo_detalle_stock=pg_result($consulta,$i,'stockdet_cod');
+                $cantidad= sumando_stock($codigo_detalle_stock);
+                //obtenermos la cantidad del detalle
+                $actualizar= "update stock_detalle set stockdet_actual=(stockdet_actual+$cantidad) where stockdet_cod=$codigo_detalle_stock";
+                $eje = pg_query($actualizar)or die('Error al actualizar Stock Actual'.$actualizar);
+                 $i++;
+                
+            }
+           
+            $query=("delete from retiro WHERE reti_cod=$codigoElim");
+            $ejecucion = pg_query($query)or die('<script type="text/javascript">
+            alert("Error al borrar Stock. Err(108):'.$query.'");
+            window.location="http://localhost/SGR/web/retiros/registrar_retiros.php";
+            </script>');
+            header("Refresh:0; url=http://localhost/SGR/web/retiros/registrar_retiros.php");  
+       }
  ?>

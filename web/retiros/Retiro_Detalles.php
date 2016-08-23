@@ -47,9 +47,8 @@
 		};
                 */
                 function eliminar(codigo){
-                    var codigo=document.getElementById("dataTables-example").rows[indi+1].cells[0].innerHTML;
-                    alert(codigo);
-			document.getElementById("txtCodigoE").value = codigo;
+//              alert(codigo);
+        document.getElementById("txtCodigoE").value = codigo;
 		};      
 	</script>
 </head>
@@ -80,10 +79,8 @@
                                     <thead>
                                         <tr class="success">
                                             <th style='display:none'>Codigo</th>
-                                            <th>Descripción</th>
-                                            <th>Producto</th>
                                             <th>Cantidad</th>
-                                            <th>Stock Actual</th>
+                                            <th>Producto</th>
                                             <th>Borrar</th>
                                         </tr>
                                     </thead>
@@ -95,19 +92,17 @@
                     $row=  pg_fetch_array($resultado);
                     $codcabecera=$row[0];
                     
-                    $query = "select stockdet_cod,stock_desc,pro_nombre,stockdet_minimo,stockdet_actual,stockdet_cantidad from producto,stock,stock_detalle where 
-                    stock.stock_cod=stock_detalle.stock_cod and producto.pro_cod=stock_detalle.pro_cod and stock.stock_cod=$codcabecera";
+                    $query = "select retidet_cod,reti_obser,en_nom,en_ape,depar_desc,retidet_cantidad,retidet_cantidad_actual,stock_detalle.stockdet_actual
+                    from retiro,retiro_detalle,encargado,departamentos_unidad,stock_detalle where retiro.en_cod=encargado.en_cod 
+                    and retiro.depar_cod=departamentos_unidad.depar_cod and retiro.reti_cod=retiro_detalle.reti_cod and
+                     stock_detalle.stockdet_cod=retiro_detalle.stockdet_cod and retiro.reti_cod=$codcabecera";
                     $result = pg_query($query) or die ("Error al realizar la consulta");
                     while($row1 = pg_fetch_array($result))
                     {
-                        echo "<tr><td style='display:none'>".$row1["stockdet_cod"]."</td>";
-                        echo "<td>".$row1["stock_desc"]."</td>";
-                        echo "<td>".$row1["pro_nombre"]."</td>";
-                        echo "<td>".$row1["stockdet_cantidad"]."</td>";
-                        echo "<td>".$row1["stockdet_actual"]."</td>";
-                       
+                        echo "<tr><td style='display:none'>".$row1["retidet_cod"]."</td>";
+                        echo "<td>".$row1["retidet_cantidad"]."</td>";
                         echo "<td>";?>
-                        <a onclick='eliminar(<?php echo $row1["stockdet_cod"];?>)' class="btn btn-danger btn-xs active" data-toggle="modal" data-target="#modalbor" role="button">Borrar</a>
+                        <a onclick='eliminar(<?php echo $row1["retidet_cod"];?>)' class="btn btn-danger btn-xs active" data-toggle="modal" data-target="#modalbor" role="button">Borrar</a>
                         <?php
                         echo "</td></tr>";
                     }
@@ -147,19 +142,20 @@
                                     <form  autocomplete="off" class="form-horizontal" name="agregarform" action="../class/ClsRetiroDetalle.php" method="post" role="form">
 						
                                         <div class="form-group">
-                                            <label  class="col-sm-2 control-label" for="input01">Cantidad</label>
-                                            <div class="col-sm-10">
+                                            <label  class="col-sm-3 control-label" for="input01">Cantidad</label>
+                                            <div class="col-sm-9">
                                             <input type="number" name="txtCantidadA" class="form-control" id="txtCantidadA" placeholder="ingrese cantidad" required />
                                             </div>
 					</div>
-					<div class="form-group">
-                                            <label  class="col-sm-2 control-label" for="input01">Descripcion Producto</label>
-                                            <div class="col-sm-10">
-                                                <select name="txtProductoA" class="form-control" id="txtProductoA" required>
+                                        
+                                        <div class="form-group">
+                                            <label  class="col-sm-3 control-label" for="input01">Stock Detalle</label>
+                                            <div class="col-sm-9">
+                                                <select name="txtStockDetalleA" class="form-control" id="txtStockDetalleA" required>
                                                     <?php
                                                     //esto es para mostrar un select que trae datos de la BDD
                                                     conexionlocal();
-                                                    $query = "Select pro_cod,pro_nombre from producto pro,stock_det where pro_estado='t'";
+                                                    $query = "select stock_detalle.stockdet_cod,stock_desc || '  ' || stockdet_actual || '  ' || pro_nombre as stock from stock,stock_detalle,producto where stock_detalle.stock_cod=stock.stock_cod and stock_detalle.pro_cod=producto.pro_cod";
                                                     $resultadoSelect = pg_query($query);
                                                     while ($row = pg_fetch_row($resultadoSelect)) {
                                                         echo "<option value=" . $row[0] . ">";
@@ -178,9 +174,7 @@
                                     </form>
 				</div>
 				
-				<!-- Modal Footer -->
-				
-                                
+				<!-- Modal Footer -->  
 			</div>
 		</div>
 	</div>
@@ -197,7 +191,7 @@
             
 				<!-- Modal Body -->
 				<div class="modal-body">
-                                    <form class="form-horizontal" name="borrarform" action="../class/ClsStockDetalle.php" onsubmit="return submitForm();" method="post" role="form">
+                                    <form class="form-horizontal" name="borrarform" action="../class/ClsRetiroDetalle.php" onsubmit="return submitForm();" method="post" role="form">
 						<div class="form-group">
 							<input type="numeric" name="txtCodigoE" class="hide" id="txtCodigoE" />
 							<div class="alert alert-danger alert-dismissable col-sm-10 col-sm-offset-1">

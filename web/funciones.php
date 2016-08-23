@@ -274,7 +274,41 @@
             $query = pg_query("select count(stock_cod) from stock_detalle where stock_cod=$codcabecera");
             $row1 = pg_fetch_array($query);
             return $row1[0];
-        
-            
         }
+        function validar_stock($stockdetcod){
+            selectConexion('SGR');
+            $query = "select COALESCE(stockdet_actual,0) AS stockactual from stock_detalle where stockdet_cod=$stockdetcod";
+            $result = pg_query($query) or die ("Error al realizar la consulta");
+            $row = pg_fetch_row($result);
+              return $row[0];
+        }
+        function stockcoddet($retirodetcod){
+            selectConexion('SGR');
+            $query = "select retiro_detalle.stockdet_cod from stock_detalle,retiro_detalle where retiro_detalle.stockdet_cod=stock_detalle.stockdet_cod and retiro_detalle.retidet_cod=$retirodetcod";
+            $result = pg_query($query) or die ($query);
+            $row = pg_fetch_row($result);
+              return $row[0];
+        }
+        function sumar_stock($retidetcod){
+            selectConexion('SGR');
+            $query = "select retiro_detalle.retidet_cantidad from retiro_detalle where retidet_cod=$retidetcod";
+            $result = pg_query($query) or die ($query);
+            $row = pg_fetch_row($result);
+              return $row[0];
+        }
+        function stockdetcod($retirocod){
+            selectConexion('SGR');
+            $query = "select retiro_detalle.stockdet_cod from stock_detalle,retiro_detalle,retiro where retiro_detalle.stockdet_cod=stock_detalle.stockdet_cod and retiro.reti_cod=retiro_detalle.reti_cod and retiro_detalle.reti_cod=$retirocod";
+            $result = pg_query($query) or die ($query);
+            $row = pg_fetch_row($result);
+              return $row[0];
+        }
+        function sumando_stock($codigo_detalle){
+            selectConexion('SGR');
+            $query = "select retiro_detalle.retidet_cantidad from retiro_detalle where stockdet_cod=$codigo_detalle";
+            $result = pg_query($query) or die ($query);
+            $row = pg_fetch_row($result);
+              return $row[0];
+        }
+       
 

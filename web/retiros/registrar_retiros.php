@@ -55,6 +55,7 @@ if (!isset($_SESSION['codigo_usuario']))
         </script>
         <script type="text/javascript">
             function eliminar(codigo) {
+              
                 document.getElementById("txtCodigoE").value = codigo;
             }
             ;
@@ -80,7 +81,7 @@ if (!isset($_SESSION['codigo_usuario']))
                      window.location="http://localhost/SGR/web/retiros/registrar_retiros.php";
                 }
                 else{
-                   $.ajax({type: "GET",url:"../class/ClsRegistrarRetiro.php",
+                   $.ajax({type: "GET",url:"../class/ClsRegistrarRetiroCabecera.php",
                                 data:"observacion="+observacion+"&encargado="+encargado+"&departamento="+departamento,
                                 success:function(msg){
                             $("#").fadeIn("slow",function(){
@@ -153,7 +154,7 @@ if (!isset($_SESSION['codigo_usuario']))
                                                 echo "<td>" . $row1["depar_desc"] . "</td>";
                                                 echo "<td>";
                                                 ?>
-                                            <a onclick='eliminar(<?php echo $row1["stock_cod"]; ?>)' class="btn btn-danger btn-xs active" data-toggle="modal" data-target="#modalbor" role="button">Borrar</a>
+                                            <a onclick='eliminar(<?php echo $row1["reti_cod"]; ?>)' class="btn btn-danger btn-xs active" data-toggle="modal" data-target="#modalbor" role="button">Borrar</a>
                                             <?php
                                             echo "</td></tr>";
                                         }
@@ -260,7 +261,7 @@ if (!isset($_SESSION['codigo_usuario']))
 
                     <!-- Modal Body -->
                     <div class="modal-body">
-                        <form class="form-horizontal" name="borrarform" action="../class/ClsRegistrarStock.php" onsubmit="return submitForm();" method="post" role="form">
+                        <form class="form-horizontal" name="borrarform" action="../class/ClsRegistrarRetiro.php" onsubmit="return submitForm();" method="post" role="form">
                             <div class="form-group">
                                 <input type="numeric" name="txtCodigoE" class="hide" id="txtCodigoE" />
                                 <div class="alert alert-danger alert-dismissable col-sm-10 col-sm-offset-1">
