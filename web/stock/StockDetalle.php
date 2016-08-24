@@ -47,8 +47,6 @@
 		};
                 */
                 function eliminar(codigo){
-                    var codigo=document.getElementById("dataTables-example").rows[indi+1].cells[0].innerHTML;
-                    alert(codigo);
 			document.getElementById("txtCodigoE").value = codigo;
 		};      
 	</script>
@@ -96,13 +94,13 @@
                     $row=  pg_fetch_array($resultado);
                     $codcabecera=$row[0];
                     
-                    $query = "select stockdet_cod,stock_desc,pro_nombre,stockdet_minimo,stockdet_actual,stockdet_cantidad from producto,stock,stock_detalle where 
+                    $query = "select stockdet_cod,pro_nombre,stockdet_minimo,stockdet_actual,stockdet_cantidad from producto,stock,stock_detalle where 
                     stock.stock_cod=stock_detalle.stock_cod and producto.pro_cod=stock_detalle.pro_cod and stock.stock_cod=$codcabecera";
                     $result = pg_query($query) or die ("Error al realizar la consulta");
                     while($row1 = pg_fetch_array($result))
                     {
                         echo "<tr><td style='display:none'>".$row1["stockdet_cod"]."</td>";
-                        echo "<td>".$row1["stock_desc"]."</td>";
+                       
                         echo "<td>".$row1["pro_nombre"]."</td>";
                         echo "<td>".$row1["stockdet_cantidad"]."</td>";
                         echo "<td>".$row1["stockdet_minimo"]."</td>";

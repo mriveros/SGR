@@ -96,7 +96,6 @@ $catego=  $_SESSION["categoria_usuario"];
                                     <thead>
                                         <tr class="success">
                                             <th style='display:none'>Codigo</th>
-                                            <th>Descripción</th>
                                             <th>Producto</th>
                                              <th>Cantidad</th>
                                             <th>Stock Minimo</th>
@@ -109,13 +108,12 @@ $catego=  $_SESSION["categoria_usuario"];
                     if  (empty($_POST['codigo_cabecera'])){$codigo_cabecera=0;}else{ $codigo_cabecera = $_POST['codigo_cabecera'];}
                     
                     conexionlocal();
-                    $query = "select stockdet_cod,stock_desc,pro_nombre,stockdet_minimo,stockdet_actual,stockdet_cantidad from producto,stock,stock_detalle where 
+                    $query = "select stockdet_cod,pro_nombre,stockdet_minimo,stockdet_actual,stockdet_cantidad from producto,stock,stock_detalle where 
                     stock.stock_cod=stock_detalle.stock_cod and producto.pro_cod=stock_detalle.pro_cod and stock.stock_cod=$codigo_cabecera";
                     $result = pg_query($query) or die ("Error al realizar la consulta");
                     while($row1 = pg_fetch_array($result))
                     {
                         echo "<tr><td style='display:none'>".$row1["stockdet_cod"]."</td>";
-                        echo "<td>".$row1["stock_desc"]."</td>";
                         echo "<td>".$row1["pro_nombre"]."</td>";
                         echo "<td>".$row1["stockdet_cantidad"]."</td>";
                         echo "<td>".$row1["stockdet_minimo"]."</td>";
