@@ -92,15 +92,18 @@
                     $row=  pg_fetch_array($resultado);
                     $codcabecera=$row[0];
                     
-                    $query = "select retidet_cod,reti_obser,en_nom,en_ape,depar_desc,retidet_cantidad,retidet_cantidad_actual,stock_detalle.stockdet_actual
-                    from retiro,retiro_detalle,encargado,departamentos_unidad,stock_detalle where retiro.en_cod=encargado.en_cod 
-                    and retiro.depar_cod=departamentos_unidad.depar_cod and retiro.reti_cod=retiro_detalle.reti_cod and
-                     stock_detalle.stockdet_cod=retiro_detalle.stockdet_cod and retiro.reti_cod=$codcabecera";
+                    $query = "select retdet.retidet_cod,retdet.retidet_cantidad,pro.pro_nombre
+                    from retiro ret,retiro_detalle retdet,stock_detalle stkdet, producto pro
+                    where ret.reti_cod=retdet.reti_cod 
+                    and stkdet.stockdet_cod=retdet.stockdet_cod
+                    and stkdet.pro_cod=pro.pro_cod
+                    and ret.reti_cod=$codcabecera";
                     $result = pg_query($query) or die ("Error al realizar la consulta");
                     while($row1 = pg_fetch_array($result))
                     {
                         echo "<tr><td style='display:none'>".$row1["retidet_cod"]."</td>";
-                        echo "<td>".$row1["retidet_cantidad"]."</td>";
+                         echo "<td>".$row1["retidet_cantidad"]."</td>";
+                        echo "<td>".$row1["pro_nombre"]."</td>";
                         echo "<td>";?>
                         <a onclick='eliminar(<?php echo $row1["retidet_cod"];?>)' class="btn btn-danger btn-xs active" data-toggle="modal" data-target="#modalbor" role="button">Borrar</a>
                         <?php
