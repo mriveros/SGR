@@ -348,20 +348,24 @@
     </div>  
     </div>
        <?php
-        $query = pg_query("select COALESCE(min(pro_cod),0) from stock_detalle where stockdet_actual<stockdet_minimo");
+        $query = pg_query("select pro.pro_nombre,stdet.stockdet_actual,stdet.stockdet_minimo
+        from stock_detalle stdet,producto pro 
+        where stdet.stockdet_actual<stdet.stockdet_minimo
+        and pro.pro_cod=stdet.pro_cod");
         $row1 = pg_fetch_array($query);
-        $precintos_disponibles=$row1[0];
-        $query = pg_query("select COALESCE(min(pro_cod),0) from stock_detalle where stockdet_actual<stockdet_minimo");
-        $row1 = pg_fetch_array($query);
-        $precintos_usados=$row1[0];
+        $nombre_producto=$row1[0];
+        $cantidad_actual=$row1[1];
+        $cantidad_minimo=$row1[2];
+        
+        
         echo "
 	<script type='text/javascript'>
         $( document ).ready(function() {
 	Morris.Donut({
             element: 'donut',
             data: [
-              {value: ".$precintos_disponibles.", label: 'Stock Actual'},
-              {value: ".$precintos_usados.", label: 'Stock Minimo'},
+              {value: ".$cantidad_actual.", label: '$nombre_producto:Actual'},
+              {value: ".$cantidad_minimo.", label: '$nombre_producto:Mínimo'},
             ],
             formatter: function (x) { return x + ''}
           }).on('click', function(i, row){
@@ -369,7 +373,10 @@
           });
          });        
         </script>";
-        
+        $query = pg_query("select COALESCE(min(pro_cod),0) from stock_detalle where stockdet_actual<stockdet_minimo");
+        $row1 = pg_fetch_array($query);
+        $precintos_disponibles=$row1[0];
+        $precintos_usados=$row1[0];
         echo "
 	<script type='text/javascript'>
         $( document ).ready(function() {
