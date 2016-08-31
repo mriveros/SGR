@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['codigo_usuario']))
 header("Location:http://localhost/SGR/login/acceso.html");
-$catego=  $_SESSION["categoria_usuario"];
+$catego=  $_SESSION["codigo_categoria"]
 
 ?>
 <!DOCTYPE html>

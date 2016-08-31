@@ -59,12 +59,12 @@ $catego=  $_SESSION["categoria_usuario"];
 			indi = $(this).index();
 			var nombre=document.getElementById("dataTables-example").rows[indi+1].cells[1].innerHTML;
 			var apellido=document.getElementById("dataTables-example").rows[indi+1].cells[2].innerHTML;
-                        var ci=document.getElementById("dataTables-example").rows[indi+1].cells[4].innerHTML;
+                       
 //                        alert(codencargado);
                         document.getElementById("txtCodigo").value = codencargado;
                         document.getElementById("txtNombreM").value = nombre;
 			document.getElementById("txtApellidoM").value = apellido;
-			document.getElementById("txtCiM").value = ci;
+			
                        });
 		};
 		function eliminar(codencargado){
@@ -221,6 +221,24 @@ $catego=  $_SESSION["categoria_usuario"];
                                              </select>
                                             </div>
 					</div>
+                                        <div class="form-group">
+                                            <label  class="col-sm-2 control-label" for="input01">Usuario</label>
+                                            <div class="col-sm-10">
+                                           <select name="txtUsuarioA" class="form-control" id="txtUsuarioA" required>
+                                                <?php
+                                                //esto es para mostrar un select que trae datos de la BDD
+                                                conexionlocal();
+                                                $query = "Select usu_cod,usu_nom||' '||usu_ape from usuarios where usu_estado='t' ";
+                                                $resultadoSelect = pg_query($query);
+                                                while ($row = pg_fetch_row($resultadoSelect)) {
+                                                echo "<option value=".$row[0].">";
+                                                echo $row[1];
+                                                echo "</option>";
+                                                }
+                                                ?>
+                                             </select>
+                                            </div>
+					</div>
 					<div class="form-group">
                                             <label  class="col-sm-2 control-label" for="input03">Estado</label>
                                             <div class="col-sm-10">
@@ -298,6 +316,24 @@ $catego=  $_SESSION["categoria_usuario"];
                                                 //esto es para mostrar un select que trae datos de la BDD
                                                 conexionlocal();
                                                 $query = "Select depar_cod,depar_desc from departamentos_unidad where depar_estado='t' ";
+                                                $resultadoSelect = pg_query($query);
+                                                while ($row = pg_fetch_row($resultadoSelect)) {
+                                                echo "<option value=".$row[0].">";
+                                                echo $row[1];
+                                                echo "</option>";
+                                                }
+                                                ?>
+                                             </select>
+                                            </div>
+					</div>
+                                        <div class="form-group">
+                                            <label  class="col-sm-2 control-label" for="input01">Usuario</label>
+                                            <div class="col-sm-10">
+                                           <select name="txtUsuarioM" class="form-control" id="txtUsuarioM" required>
+                                                <?php
+                                                //esto es para mostrar un select que trae datos de la BDD
+                                                conexionlocal();
+                                                $query = "Select usu_cod,usu_nom||' '||usu_ape from usuarios where usu_estado='t' ";
                                                 $resultadoSelect = pg_query($query);
                                                 while ($row = pg_fetch_row($resultadoSelect)) {
                                                 echo "<option value=".$row[0].">";
