@@ -244,6 +244,7 @@
                              
                             <!-- /.nav-second-level -->
                         </li>
+                        
                         <li>
                             <a href="#"><i class="fa  fa-exclamation-circle "></i>  REGISTRAR MIGRACION<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -252,6 +253,18 @@
                                     <a href="http://localhost/SGR/web/registrar_migracion/registrar_migracion.php">Migración de Reactivos</a>
                                 </li>
                             </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa  fa-database"></i>  REGISTRAR CONSUMOS<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                 
+                                    <a href="http://localhost/SGR/web/consumos/registrar_consumos.php">Registrar Consumos</a>
+                                     <a href="http://localhost/SGR/web/consumos/detalle_consumos.php">Detalle de Consumos</a>
+                                </li>
+                            </ul>
+                             
                             <!-- /.nav-second-level -->
                         </li>
                        

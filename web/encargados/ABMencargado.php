@@ -111,13 +111,16 @@ $catego=  $_SESSION["categoria_usuario"];
                                             <th style='display:none'>Codigo</th>
                                             <th>Nombre</th>
                                             <th>Apellido</th>
+                                            <th>Departamento</th>
                                             <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                     <?php
-                    $query = "select * from encargado";
+                    $query = "select * 
+                    from encargado en, departamentos_unidad depar
+                    where en.depar_cod=depar.depar_cod";
                     $result = pg_query($query) or die ("Error al realizar la consulta");
                     while($row1 = pg_fetch_array($result))
                     {
@@ -130,6 +133,7 @@ $catego=  $_SESSION["categoria_usuario"];
                       echo "<tr><td style='display:none'>" . $row1["en_cod"] . "</td>";
                       echo "<td>" . $row1["en_nom"] . "</td>";
                       echo "<td>" . $row1["en_ape"] . "</td>";
+                      echo "<td>" . $row1["depar_desc"] . "</td>";
                       echo "<td>" . $estado . "</td>";
                       echo "<td>";
                       ?>                          
