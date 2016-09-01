@@ -120,9 +120,9 @@
                         <i class="fa fa-user fa-fw"  href="http://localhost/SGR/web/logout.php"></i> <?php echo "USUARIO"//$_SESSION['usernom']." ".$_SESSION['userape']; ?> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Cambiar Contraseña</a>
+                        <li><a data-toggle="modal" data-target="#modalpassword"><i class="fa fa-user fa-fw"></i> Cambiar Contraseña</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configuracion</a>
+                        <li><a><i class="fa fa-gear fa-fw"></i> Configuración</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="http://localhost/SGR/web/logout.php"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesion</a>
@@ -291,7 +291,42 @@
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
-        </nav> 
+        </nav>
+        <div class="modal fade" id="modalpassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- Modal Header -->
+				<div class="modal-header"><button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h3 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-floppy-disk"></i> Cambiar Contraseña</h3>
+				</div>
+            
+				<!-- Modal Body -->
+				<div class="modal-body">
+                                    <form  autocomplete="off" class="form-horizontal" name="agregarform" action="../class/Clsmarca.php" method="post" role="form">
+					    <div class="form-group">
+                                            <label  class="col-sm-2 control-label" for="input01">Password Actual</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" name="txtPasswordActual" class="form-control" id="txtPasswordActual" placeholder="ingrese password" required="true"/>
+                                            </div>
+                                            </div>
+					<div class="form-group">
+                                            <label  class="col-sm-2 control-label" for="input01">Password Nuevo</label>
+                                            <div class="col-sm-10">
+                                             <input type="password" name="txtPasswordNuevo" class="form-control" id="txtPasswordNuevo" placeholder="ingrese password" required="true"/>
+                                            </div>
+                                            </div>	
+				</div>
+				
+				<!-- Modal Footer -->
+				<div class="modal-footer">
+					<button type="reset" onclick="location.reload();" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+					<button type="submit" name="agregar" class="btn btn-primary">Guardar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
