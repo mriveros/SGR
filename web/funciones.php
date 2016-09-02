@@ -308,7 +308,30 @@
             $query = "select retiro_detalle.retidet_cantidad from retiro_detalle where stockdet_cod=$codigo_detalle";
             $result = pg_query($query) or die ($query);
             $row = pg_fetch_row($result);
-              return $row[0];
+                return $row[0];
+        }
+          function validar_cantidad($retidetcod){
+            selectConexion('SGR');
+            $query = "select COALESCE(retidet_cantidad_actual,0) AS canactual from retiro_detalle where retidet_cod=$retidetcod";
+            $result = pg_query($query) or die ("Error al realizar la consulta");
+            $row = pg_fetch_row($result);
+                return $row[0];
+        }
+        function retirocoddet($migcod){
+            selectConexion('SGR');
+            $query = "select migracion_producto.retidet_cod from
+            migracion_producto,retiro_detalle where 
+            retiro_detalle.retidet_cod=migracion_producto.retidet_cod and migracion_producto.mig_cod=$migcod";
+            $result = pg_query($query) or die ($query);
+            $row = pg_fetch_row($result);
+                return $row[0];
+        }
+        function sumar_cantidad($migracod){
+            selectConexion('SGR');
+            $query = "select migracion_producto.mig_cantidad from migracion_producto where mig_cod=$migracod";
+            $result = pg_query($query) or die ($query);
+            $row = pg_fetch_row($result);
+                return $row[0];
         }
        
 
