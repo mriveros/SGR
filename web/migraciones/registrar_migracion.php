@@ -83,7 +83,7 @@ if (!isset($_SESSION['codigo_usuario']))
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Migración de Productos - <small>SGR INTN</small></h1>
+                        <h1 class="page-header">Migración de Reactivos - <small>SGR INTN</small></h1>
                     </div>	
                 </div>
                 <!-- /.row -->
