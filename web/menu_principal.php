@@ -260,7 +260,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                        <li>
-                            <a href="#"><i class="fa  fa-database"></i>  REGISTRAR CONSUMOS<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa  fa-bookmark"></i>  REGISTRAR CONSUMOS<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                  
@@ -271,8 +271,6 @@
                              
                             <!-- /.nav-second-level -->
                         </li>
-                      
-                        
                         <li>
                             <a href="#"><i class="fa  fa-file-text "></i> INFORMES<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -287,9 +285,6 @@
                                     <a href="http://localhost/SGR/web/informes/Frm_Resumen_Puestos_Emblemas.php">Resumen por Unidad/Departamentos</a>
                                      <a href="http://localhost/SGR/web/informes/Frm_Resumen_Puestos_Emblemas.php">Resumen por Encargados</a>
                                 </li>
-                               
-                                    
-                               
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -298,7 +293,6 @@
                             <ul class="nav nav-second-level">
                                 
                                     <a href="">Contacte con el Programador: mriveros@intn.gov.py</a>
-                              
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -311,11 +305,7 @@
 
      <div id="wrapper">
          <div id="page-wrapper">
-
-        
-            <div class="row">
-                
-				
+            <div class="row">		
                 <div class="col-lg-5">
                     <!-- /.panel -->
                     <div class="panel panel-default">
@@ -323,13 +313,11 @@
                            <center> <i class="fa fa-bar-chart-o fa-fw"></i><b> Stock Minimo</b></center>
                         </div>
                         <div class="panel-body">
-							<div id="donut"></div>
-                           
+                        <div id="donut"></div>
                         </div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
-                    
                 </div>
                  <div class="col-lg-5">
                     <!-- /.panel -->
@@ -338,19 +326,15 @@
                            <center> <i class="fa fa-bar-chart-o fa-fw"></i><b> Stock Minimo</b></center>
                         </div>
                         <div class="panel-body">
-							<div id="donut2"></div>
+                            <div id="donut2"></div>
                            
                         </div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
-                    
                 </div>
                 <!-- /.col-lg-4 -->
             </div>
-
-        
-             
     <!-- /#wrapper -->
     </div>  
     </div>
@@ -363,8 +347,6 @@
         $nombre_producto=$row1[0];
         $cantidad_actual=$row1[1];
         $cantidad_minimo=$row1[2];
-        
-        
         echo "
 	<script type='text/javascript'>
         $( document ).ready(function() {
@@ -399,11 +381,7 @@
           });
          });        
         </script>";
-        
-        
         ?>       
-
-
     <!-- Bootstrap Core JavaScript -->
     <script language="JavaScript" type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <!-- Morris Charts JavaScript -->
