@@ -238,7 +238,7 @@
                                 <li>
                                  
                                     <a href="http://localhost/SGR/web/retiros/registrar_retiros.php">Retiro de Reactivos</a>
-                                     <a href="http://localhost/SGR/web/retiros/reactivos_migrados.php">Detalle Retiro de Reactivos</a>
+                                     <a href="http://localhost/SGR/web/retiros/detalle_retiros.php">Detalle Retiro de Reactivos</a>
                                 </li>
                             </ul>
                              
