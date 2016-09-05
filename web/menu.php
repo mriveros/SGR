@@ -257,7 +257,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa  fa-database"></i>  REGISTRAR CONSUMOS<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa  fa-bookmark"></i>  REGISTRAR CONSUMOS<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                  
