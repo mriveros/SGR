@@ -238,7 +238,7 @@
                                 <li>
                                  
                                     <a href="http://localhost/SGR/web/retiros/registrar_retiros.php">Retiro de Reactivos</a>
-                                     <a href="http://localhost/SGR/web/retiros/detalle_retiros.php">Detalle Retiro de Reactivos</a>
+                                     <a href="http://localhost/SGR/web/retiros/reactivos_migrados.php">Detalle Retiro de Reactivos</a>
                                 </li>
                             </ul>
                              
@@ -250,7 +250,8 @@
                             <ul class="nav nav-second-level">
                                 <li>
                                  
-                                    <a href="http://localhost/SGR/web/registrar_migracion/registrar_migracion.php">Migración de Reactivos</a>
+                                    <a href="http://localhost/SGR/web/migraciones/registrar_migracion.php">Migración de Reactivos</a>
+                                    <a href="http://localhost/SGR/web/migraciones/reactivos_migrados.php">Reactivos Migrados</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

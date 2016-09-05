@@ -16,42 +16,38 @@ $codusuario=  $_SESSION["codigo_usuario"];
     if  (empty($_POST['txtCodigoE'])){$codigoElim=0;}else{$codigoElim=$_POST['txtCodigoE'];}
         //Si es agregar
         if(isset($_POST['agregar'])){
-//            $query = "Select max(reti_cod) from retiro;";
-//                $resultado=pg_query($query);
-//                $row=  pg_fetch_array($resultado);
-//                $codcabecera=$row[0];
                 $cantidadactual=validar_cantidad($codigo);
-                    if($cantidadactual<$cantidad){
+                if($cantidadactual<$cantidad){
                         echo '<script type="text/javascript">
-			alert("la Cantidad ingresada supera el Stock actual del Producto que desea migrar. Debe ser menor a '.$cantidadactual.'");
-                            window.location="http://localhost/SGR/web/registrar_migracion/registrar_migracion.php";
+			alert("La Cantidad ingresada supera el Stock actual del Producto que desea migrar. Debe ser menor a '.$cantidadactual.'");
+                            window.location="http://localhost/SGR/web/migraciones/registrar_migracion.php";
 			 </script>';
-                    }  else {   
+                }  else {   
                 $query = "INSERT INTO migracion_producto(mig_cantidad,mig_fecha,depar_cod,en_cod,retidet_cod,usu_cod)"
-                    . "VALUES ($cantidad,now(),$departamento,$encargado,$codigo,$codusuario);";
+                . "VALUES ($cantidad,now(),$departamento,$encargado,$codigo,$codusuario);";
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al Migrar Producto. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/registrar_migracion/registrar_migracion.php";
+                window.location="http://localhost/SGR/web/migraciones/registrar_migracion.php";
 		</script>');
                 $actualizar= "update retiro_detalle set retidet_cantidad_actual=(retidet_cantidad_actual-$cantidad) where retidet_cod=$codigo";
                 $eje = pg_query($actualizar)or die('Error al actualizar Cantidad Actual'.$actualizar);
                 $actualizar= '';
-                header("Refresh:0; url=http://localhost/SGR/web/registrar_migracion/registrar_migracion.php");
+                header("Refresh:0; url=http://localhost/SGR/web/migraciones/registrar_migracion.php");
                 }
             }
              if(isset($_POST['borrar'])){
-            $coddetalleretiro= retirocoddet($codigoElim);
-            $cantidad= sumar_cantidad($codigoElim);
-            $query=("delete from migracion_producto WHERE mig_cod=$codigoElim");
-            $ejecucion = pg_query($query)or die('<script type="text/javascript">
+                $coddetalleretiro= retirocoddet($codigoElim);
+                $cantidad= sumar_cantidad($codigoElim);
+                $query=("delete from migracion_producto WHERE mig_cod=$codigoElim");
+                $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al BORRAR el Producto Migrado. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/registrar_migracion/productos_migrados.php";
+                window.location="http://localhost/SGR/web/migraciones/reactivos_migrados.php";
 		</script>');
-            $actualizar= "update retiro_detalle set retidet_cantidad_actual=(retidet_cantidad_actual+$cantidad) where retidet_cod=$coddetalleretiro";
+                $actualizar= "update retiro_detalle set retidet_cantidad_actual=(retidet_cantidad_actual+$cantidad) where retidet_cod=$coddetalleretiro";
                 $eje = pg_query($actualizar)or die('Error al actualizar Cantidad Actual'.$actualizar);
                 $actualizar= '';
-            header("Refresh:0; url=http://localhost/SGR/web/registrar_migracion/productos_migrados.php");
+                header("Refresh:0; url=http://localhost/SGR/web/migraciones/reactivos_migrados.php");
 	}
        
     ?>    

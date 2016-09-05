@@ -55,7 +55,6 @@ if (!isset($_SESSION['codigo_usuario']))
         </script>
         <script type="text/javascript">
             function migrarProducto(codigo) {
-//                alert(codigo);
                 document.getElementById("txtCodigo").value = codigo;
                 
             }
@@ -113,14 +112,14 @@ if (!isset($_SESSION['codigo_usuario']))
                                         <tbody>
                                             <?php
                                             $query = "select retidet_cod,reti_fecha,en_nom,en_ape,depar_desc,retidet_cantidad,
-                    retidet_cantidad_actual,pro_nombre
-                    from retiro,retiro_detalle,encargado,departamentos_unidad,producto,stock,stock_detalle 
-                    where retiro.reti_cod=retiro_detalle.reti_cod 
-                    and retiro.en_cod=encargado.en_cod
-                    and retiro.depar_cod=departamentos_unidad.depar_cod 
-                    and stock.stock_cod=stock_detalle.stock_cod 
-                    and producto.pro_cod=stock_detalle.pro_cod 
-                    and retiro_detalle.stockdet_cod=stock_detalle.stockdet_cod";
+                                            retidet_cantidad_actual,pro_nombre
+                                            from retiro,retiro_detalle,encargado,departamentos_unidad,producto,stock,stock_detalle 
+                                            where retiro.reti_cod=retiro_detalle.reti_cod 
+                                            and retiro.en_cod=encargado.en_cod
+                                            and retiro.depar_cod=departamentos_unidad.depar_cod 
+                                            and stock.stock_cod=stock_detalle.stock_cod 
+                                            and producto.pro_cod=stock_detalle.pro_cod 
+                                            and retiro_detalle.stockdet_cod=stock_detalle.stockdet_cod";
                                             $result = pg_query($query) or die("Error al realizar la consulta");
                                             while ($row1 = pg_fetch_array($result)) {
                                                 echo "<tr><td style='display:none'>".$row1["retidet_cod"]."</td>";
@@ -165,7 +164,7 @@ if (!isset($_SESSION['codigo_usuario']))
            <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <b><center>INGRESE DATOS DEL PRODUCTO A MIGRAR</b></center>
+                                <b><center>DATOS SOBRE MIGRACION</b></center>
                             </div>
                             <div class="modal-body">
                             <form  autocomplete="off" class="form-horizontal" name="agregarform" action="../class/ClsMigracion_Producto.php" method="post" role="form">
@@ -216,8 +215,8 @@ if (!isset($_SESSION['codigo_usuario']))
                                              </select>
                                             </div>
 					</div>
-			<div class="modal-footer">
-                            <button type="reset" onclick="location.reload();" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+                                        <div class="modal-footer">
+                                        <button type="reset" onclick="location.reload();" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
 					<button type="submit" name="agregar" class="btn btn-primary">Agregar</button>
                                         </div>
 				</div>

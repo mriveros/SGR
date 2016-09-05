@@ -53,7 +53,6 @@ if (!isset($_SESSION['codigo_usuario']))
                 });
             });
             function eliminar(codigo){
-//                alert(codigo);
 			document.getElementById("txtCodigoE").value = codigo;
 		};
         </script>

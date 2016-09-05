@@ -1,11 +1,6 @@
 <?php 
     $conectate=pg_connect("host=localhost port=5432 dbname=SGR user=postgres password=postgres")or die ('Error al conectar a la base de datos');
-    //$consulta= pg_exec($conectate,"select sum(reg_cant)as cantidad,sum(reg_aprob) as aprobados,sum(reg_reprob)
-    //as reprobados,sum(reg_claus)as clausurados from registros where reg_fecha < now()");
-    //$cantidad=pg_result($consulta,0,'cantidad');
-    //$aprobados=pg_result($consulta,0,'aprobados');
-    //$reprobados=pg_result($consulta,0,'reprobados');
-    //$clausurados=pg_result($consulta,0,'clausurados');
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -258,7 +253,8 @@
                             <ul class="nav nav-second-level">
                                 <li>
                                  
-                                    <a href="http://localhost/SGR/web/registrar_migracion/registrar_migracion.php">Migración de Reactivos</a>
+                                    <a href="http://localhost/SGR/web/migraciones/registrar_migracion.php">Migración de Reactivos</a>
+                                    <a href="http://localhost/SGR/web/migraciones/reactivos_migrados.php">Reactivos Migrados</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
