@@ -263,9 +263,9 @@
                             <a href="#"><i class="fa  fa-bookmark"></i>  REGISTRAR CONSUMOS<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                 
-                                    <a href="http://localhost/SGR/web/consumos/registrar_consumos.php">Registrar Consumos</a>
-                                     <a href="http://localhost/SGR/web/consumos/detalle_consumos.php">Detalle de Consumos</a>
+                                   <a href="http://localhost/SGR/web/consumos/registrar_consumos_retiro.php">Registrar Consumos Retiro</a>
+                                   <a href="http://localhost/SGR/web/consumos/registrar_consumos_migracion.php">Registrar Consumos Migración</a>
+                                   <a href="http://localhost/SGR/web/consumos/detalle_consumos.php">Productos Consumidos</a>
                                 </li>
                             </ul>
                              
@@ -275,15 +275,11 @@
                             <a href="#"><i class="fa  fa-file-text "></i> INFORMES<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://localhost/SGR/web/informes/Imp_registro_impresion.php">Imprimir Registro</a>
-                                    <a href="http://localhost/SGR/web/informes/Frm_Busqueda_Precinto.php">Impresión/Búsqueda por Stock</a>
-                                    <a href="http://localhost/SGR/web/informes/Frm_Resumen_Emblemas.php">Resumen por Productos</a> 
-                                    <a href="http://localhost/SGR/web/informes/Frm_Resumen_Puestos.php">Movimiento Producto</a> 
-                                    <a href="http://localhost/SGR/web/informes/Frm_Resumen_Puestos.php">Productos Migrados</a> 
-                                    <a href="http://localhost/SGR/web/informes/Frm_Resumen_Puestos.php">Localizar Producto</a> 
-                                    <a href="http://localhost/SGR/web/informes/Frm_Resumen_Camion.php">Stock Mínimo</a> 
-                                    <a href="http://localhost/SGR/web/informes/Frm_Resumen_Puestos_Emblemas.php">Resumen por Unidad/Departamentos</a>
-                                     <a href="http://localhost/SGR/web/informes/Frm_Resumen_Puestos_Emblemas.php">Resumen por Encargados</a>
+                                   <a href="http://localhost/SGR/web/informes/Frm_Reactivos_Encargados.php">Resumen por Encargados</a>
+                                    <a href="http://localhost/SGR/web/informes/Frm_Reactivos_Departamentos.php">Resumen por Departamentos/Unidad</a> 
+                                    <a href="http://localhost/SGR/web/informes/Frm_Reactivos_Migrados.php">Resumen Migración</a> 
+                                    <a href="http://localhost/SGR/web/informes/Frm_Retiros_Consumidos.php">Resumen Consumo de Retiro</a>
+                                    <a href="http://localhost/SGR/web/informes/Frm_Migraciones_Consumidos.php">Resumen Consumo de Migración</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

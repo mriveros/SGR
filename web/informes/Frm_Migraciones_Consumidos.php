@@ -16,7 +16,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SGR INTN- Resumen Pagos Proveedor</title>
+    <title>SGR INTN- Informe Reactivos Consumidos Migración</title>
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
@@ -74,7 +74,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                          Obtener Acta S/ Precinto.
+                            Informe Reactivos Consumidos Migración
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -84,28 +84,48 @@ $codusuario=  $_SESSION["codigo_usuario"];
 				<!-- Modal Header -->
 				<div class="modal-header"><button type="button" class="close" data-dismiss="modal">
 					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-					<h3 class="modal-title" id="myModalLabel"><i class="fa fa-archive"></i> Obtener Acta</h3>
+                                        <h3 class="modal-title" id="myModalLabel"><i class="fa fa-archive"></i><center>PRODUCTOS CONSUMIDOS MIGRACIÓN<br> Departamento - Unidad/Fecha</h3>
 				</div>
             
 				<!-- Modal Body -->
 				<div class="modal-body">
-                                    <form  autocomplete="off" class="form-horizontal" name="agregarform" action="Imp_acta_precinto.php" method="post" role="form">
-						
-                                       
-                                        
-                                        <div class="form-group">
-                                            <label  class="col-sm-2 control-label" for="input01">Nro Precinto</label>
-                                            <div class="col-sm-10">
-                                            <input type="number" name="txtPrecinto" class="form-control" id="txtPrecinto" required />
+                                    <form  autocomplete="off" class="form-horizontal" name="agregarform" action="Imp_Informe_Productos_Consumidos_Migracion.php" method="post" role="form">
+				<div class="form-group">
+                                            <label  class="col-sm-4 control-label" for="input01">Departamentos - Unidad</label>
+                                            <div class="col-sm-8">
+                                           <select name="txtDepartamento" class="form-control" id="txtDepartamento" required>
+                                                <?php
+                                                //esto es para mostrar un select que trae datos de la BDD
+                                                conexionlocal();
+                                                $query = "Select depar_cod,depar_desc from departamentos_unidad where depar_estado='t' ";
+                                                $resultadoSelect = pg_query($query);
+                                                while ($row = pg_fetch_row($resultadoSelect)) {
+                                                echo "<option value=".$row[0].">";
+                                                echo $row[1];
+                                                echo "</option>";
+                                                }
+                                                ?>
+                                             </select>
                                             </div>
 					</div>
-                                        
+                                        <div class="form-group">
+                                            <label  class="col-sm-4 control-label" for="input01">Desde Fecha</label>
+                                            <div class="col-sm-8">
+                                                <input type="date" name="txtDesdeFecha" class="form-control" id="txtDesdeFecha" required />
+                                            </div>
+					</div>
+                                        <div class="form-group">
+                                            <label  class="col-sm-4 control-label" for="input01">Hasta Fecha</label>
+                                            <div class="col-sm-8">
+                                            <input type="date" name="txtHastaFecha" class="form-control" id="txtHastaFecha" required />
+                                            </div>
+					</div>
 				</div>
 				
 				<!-- Modal Footer -->
 				<div class="modal-footer">
 					<button type="reset" onclick="location.reload();" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
-					<button type="submit" name="agregar" class="btn btn-primary">Buscar!</button>
+					<button type="submit" name="agregar" class="btn btn-primary">Generar!</button>
 					</form>
 				</div>
 			</div>

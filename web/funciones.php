@@ -333,5 +333,19 @@
             $row = pg_fetch_row($result);
                 return $row[0];
         }
+        function validar_cantidad_consumo_retiro($retidetcodigo){
+            selectConexion('SGR');
+            $query = "select COALESCE(retidet_cantidad_actual,0) AS canactual from retiro_detalle where retidet_cod=$retidetcodigo";
+            $result = pg_query($query) or die ("Error al realizar la consulta");
+            $row = pg_fetch_row($result);
+                return $row[0];
+        }
+        function validar_cantidad_consumo_migracion($migcodi){
+            selectConexion('SGR');
+            $query = "select COALESCE(mig_cantidad_actual,0) AS canactual from migracion_producto where mig_cod=$migcodi";
+            $result = pg_query($query) or die ("Error al realizar la consulta");
+            $row = pg_fetch_row($result);
+                return $row[0];
+        }
        
 

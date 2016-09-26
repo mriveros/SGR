@@ -16,34 +16,34 @@ $codusuario=  $_SESSION["codigo_usuario"];
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ONM- Estaciones</title>
+    <title>SGR INTN- Informe Reactivos por Encargado</title>
     <!-- Bootstrap Core CSS -->
-    <link href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
-    <link href="../../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 	<!-- DataTables CSS -->
-    <link href="../../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
     <!-- DataTables Responsive CSS -->
-    <link href="../../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+    <link href="../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="../../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="../../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- jQuery -->
-    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
 	
     <!-- DataTables JavaScript -->
-    <script src="../../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
-    <script src="../../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    <script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../../dist/js/sb-admin-2.js"></script>
+    <script src="../dist/js/sb-admin-2.js"></script>
 	
 </head>
 
@@ -66,7 +66,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                      <h1 class="page-header">Informes - <small>ONM ESTACIONES</small></h1>
+                      <h1 class="page-header">Informes - <small>SGR INTN</small></h1>
                 </div>	
             </div>
             <!-- /.row -->
@@ -74,7 +74,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Ranking Registros por Mes
+                            Informe Reactivos por Encargado
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -84,16 +84,36 @@ $codusuario=  $_SESSION["codigo_usuario"];
 				<!-- Modal Header -->
 				<div class="modal-header"><button type="button" class="close" data-dismiss="modal">
 					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-					<h3 class="modal-title" id="myModalLabel"><i class="fa fa-archive"></i>Ranking Registros por Fecha</h3>
+					<h3 class="modal-title" id="myModalLabel"><i class="fa fa-archive"></i> Encargado/Fecha</h3>
 				</div>
             
 				<!-- Modal Body -->
 				<div class="modal-body">
-                                    <form  autocomplete="off" class="form-horizontal" name="agregarform" action="rankingRegistrosFecha.php" method="post" role="form">
+                                    <form  autocomplete="off" class="form-horizontal" name="agregarform" action="Imp_Informe_Encargados.php" method="post" role="form">
+						
+                                       
+                                        <div class="form-group">
+                                            <label  class="col-sm-2 control-label" for="input01">Encargado</label>
+                                            <div class="col-sm-10">
+                                           <select name="txtEncargado" class="form-control" id="txtEncargado" required>
+                                                <?php
+                                                //esto es para mostrar un select que trae datos de la BDD
+                                                conexionlocal();
+                                                $query = "select en_cod, en_nom || ' ' || en_ape as encargado from encargado";
+                                                $resultadoSelect = pg_query($query);
+                                                while ($row = pg_fetch_row($resultadoSelect)) {
+                                                echo "<option value=".$row[0].">";
+                                                echo $row[1];
+                                                echo "</option>";
+                                                }
+                                                ?>
+                                             </select>
+                                            </div>
+					</div>
                                         <div class="form-group">
                                             <label  class="col-sm-2 control-label" for="input01">Desde Fecha</label>
                                             <div class="col-sm-10">
-                                            <input type="date" name="txtDesdeFecha" class="form-control" id="txtDesdeFecha" required />
+                                                <input type="date" name="txtDesdeFecha" class="form-control" id="txtDesdeFecha" required />
                                             </div>
 					</div>
                                         <div class="form-group">

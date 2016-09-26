@@ -14,35 +14,37 @@ function Footer()
     /***********************************OBTENER DATOS DEL FORMULARIO Y DATOS CABECERA***********************************/
     if  (empty($_POST['txtDesdeFecha'])){$fechadesde='00/00/0000';}else{$fechadesde=$_POST['txtDesdeFecha'];}
     if  (empty($_POST['txtHastaFecha'])){$fechahasta='00/00/0000';}else{$fechahasta=$_POST['txtHastaFecha'];}
-    if  (empty($_POST['txtPuestos'])){$codigo_puesto=0;}else{$codigo_puesto=$_POST['txtPuestos'];}
-    if  (empty($_POST['txtEmblema'])){$codigo_emblema=0;}else{$codigo_emblema=$_POST['txtEmblema'];}
+    if  (empty($_POST['txtDepartamento'])){$departamento=0;}else{$departamento=$_POST['txtDepartamento'];}
+    $conectate=pg_connect("host=localhost port=5432 dbname=SGR user=postgres password=postgres"
+                    . "")or die ('Error al conectar a la base de datos');
+    $consulta=pg_exec($conectate,"select depar_desc as departamento from departamentos_unidad where depar_cod=$departamento"); 
+    $row1 = pg_fetch_array($consulta);
+    $nombre_departamento=$row1['departamento'];
     /********************************************************************************************************************/
         $this->SetFont('Arial','B',8);
-        $conectate=pg_connect("host=localhost port=5432 dbname=SGR user=postgres password=postgres")or die ('Error al conectar a la base de datos');
-        $consulta=pg_exec($conectate,"select sum(pre.prec_cantprecinto) as prec_cantprecinto, sum(pre.prec_precio) as prec_precio
-        from puestos pues,precintado pre,emblemas em
-        where pues.pues_cod=pre.pues_cod
-        and em.em_cod=pre.em_cod
-        and pre.prec_fecha>='$fechadesde' 
-        and pre.prec_fecha <= '$fechahasta'
-        and pues.pues_cod=$codigo_puesto
-        and em.em_cod=$codigo_emblema");
-        $row1 = pg_fetch_array($consulta);
-        $precinto_total=$row1['prec_cantprecinto'];
-        $precio_total=$row1['prec_precio'];
+//        $consulta=pg_exec($conectate,"select sum(pre.prec_cantprecinto) as prec_cantprecinto, sum(pre.prec_precio) as prec_precio
+//        from puestos pues,precintado pre,emblemas em
+//        where pues.pues_cod=pre.pues_cod
+//        and em.em_cod=pre.em_cod
+//        and pre.prec_fecha>='$fechadesde' 
+//        and pre.prec_fecha <= '$fechahasta'
+//        and em.em_cod=$emblema");
+//        $row1 = pg_fetch_array($consulta);
+//        $precinto_total=$row1['prec_cantprecinto'];
+//        $precio_total=$row1['prec_precio'];
         
 	$this->SetDrawColor(0,0,0);
 	$this->SetLineWidth(.2);
-	$this->Line(343,236,15,236);//largor,ubicacion derecha,inicio,ubicacion izquierda
+	$this->Line(237,380,15,380);//largor,ubicacion derecha,inicio,ubicacion izquierda
         // Go to 1.5 cm from bottom
         $this->SetY(-15);
         // Select Arial italic 8
         $this->SetFont('Arial','I',8);
-        $this->text(15,220,'Total de Precinto Utilizados: '.$precinto_total);
-        $this->text(15,225,'Total Precio: '.$precio_total);
+//        $this->text(15,220,'Total de Reactivos Retirados: '.$precinto_total);
+//        $this->text(15,225,'Total Precio: '.$precio_total);
         // Print centered page number
 	$this->Cell(0,2,utf8_decode('Página: ').$this->PageNo().' de {nb}',0,0,'R');
-	$this->text(15,234,'Consulta Generada: '.date('d-M-Y').' '.date('h:i:s'));
+	$this->text(15,378,'Consulta Generada: '.date('d-M-Y').' '.date('h:i:s'));
 }
 
 function Header()
@@ -54,57 +56,48 @@ function Header()
         $this->Cell(80);
         // Framed title
 	$this->text(15,32,utf8_decode('Instituto Nacional de Tecnología, Normalización y Metrología'));
-	$this->text(315,32,'Sistema de Control de Precintado');
+	$this->text(185,32,utf8_decode('Sistema de Gestión de Reactivos'));
         //$this->text(315,37,'Mes: '.utf8_decode(genMonth_Text($mes).' Año: 2016'));
 	//$this->Cell(30,10,'noc',0,0,'C');
         // Line break
         $this->Ln(30);
 	$this->SetDrawColor(0,0,0);
 	$this->SetLineWidth(.2);
-	$this->Line(360 ,33,10,33);//largor,ubicacion derecha,inicio,ubicacion izquierda
+	$this->Line(237,33,10,33);//largor,ubicacion derecha,inicio,ubicacion izquierda
     
     
     
     if  (empty($_POST['txtDesdeFecha'])){$fechadesde='00/00/0000';}else{$fechadesde=$_POST['txtDesdeFecha'];}
     if  (empty($_POST['txtHastaFecha'])){$fechahasta='00/00/0000';}else{$fechahasta=$_POST['txtHastaFecha'];}
-    if  (empty($_POST['txtPuestos'])){$codigo_puesto=0;}else{$codigo_puesto=$_POST['txtPuestos'];}
-    if  (empty($_POST['txtEmblema'])){$codigo_emblema=0;}else{$codigo_emblema=$_POST['txtEmblema'];}
+    if  (empty($_POST['txtDepartamento'])){$departamento=0;}else{$departamento=$_POST['txtDepartamento'];}
     $conectate=pg_connect("host=localhost port=5432 dbname=SGR user=postgres password=postgres"
                     . "")or die ('Error al conectar a la base de datos');
-    $consulta=pg_exec($conectate,"select pues_des from puestos where pues_cod=$codigo_puesto"); 
+    $consulta=pg_exec($conectate,"select depar_desc as departamento from departamentos_unidad where depar_cod=$departamento"); 
     $row1 = pg_fetch_array($consulta);
-    $nombre_puesto=$row1['pues_des'];
-    
-    $consulta=pg_exec($conectate,"select em_des from emblemas where em_cod=$codigo_emblema"); 
-    $row1 = pg_fetch_array($consulta);
-    $nombre_emblema=$row1['em_des'];
+    $nombre_departamento=$row1['departamento'];
     
     $this->SetFont('Arial','B',8);
-    $this->SetTitle('Resumen Puesto-Emblemas');
-    $this->Cell(350,1,'RESUMEN DE PRECINTADOS POR PUESTOS Y EMBLEMAS',100,100,'C');//Titulo
-    $this->text(15,50,'PUESTO: ');
-    $this->text(32,50,$nombre_puesto);
-    $this->text(15,55,'EMBLEMA: ');
-    $this->text(32,55,$nombre_emblema);
-    $this->text(15,60,'DESDE: ');
-    $this->text(30,60,$fechadesde);
-    $this->text(15,65,'HASTA: ');
-    $this->text(30,65,$fechahasta);
+    $this->SetTitle('Informe-Departamentos/Unidad');
+    $this->Cell(230,1,'INFORME DE REACTIVOS POR DEPARTAMENTOS - UNIDAD',100,100,'C');//Titulo
+    $this->text(15,50,'DEPARTAMENTO - UNIDAD:  ');
+    $this->text(55,50,$nombre_departamento);
+    $this->text(15,55,'DESDE: ');
+    $this->text(30,55,$fechadesde);
+    $this->text(15,60,'HASTA: ');
+    $this->text(30,60,$fechahasta);
     $this->SetFillColor(153,192,141);
     $this->SetTextColor(255);
     $this->SetDrawColor(153,192,141);
     $this->SetLineWidth(.3);
     
-    $this->SetXY(10,70 );
+    $this->SetXY(10,65 );
     
-    $this->Cell(25,10,'Item',1,0,'C',1);
-    $this->Cell(60,10,'Destino',1,0,'C',1);
-    $this->Cell(60,10,'Transportista',1,0,'C',1);
-    $this->Cell(50,10,'Codigo Camion',1,0,'C',1);
-    $this->Cell(50,10,'Fecha',1,0,'C',1);
-    $this->Cell(30,10,'Cantidad Precintos',1,0,'C',1);
-    $this->Cell(30,10,'Precio',1,1,'C',1);
-
+    $this->Cell(15,10,'Item',1,0,'C',1);
+    $this->Cell(70,10,'Reactivo',1,0,'C',1);
+    $this->Cell(25,10,'Fecha Retiro',1,0,'C',1);
+    $this->Cell(30,10,'Cantidad',1,0,'C',1);
+    $this->Cell(30,10,'Cantidad Actual',1,0,'C',1);
+    $this->Cell(55,10,'Encargado',1,1,'C',1);
 }
 }
 
@@ -112,28 +105,26 @@ $pdf=new PDF();//'P'=vertical o 'L'=horizontal,'mm','A4' o 'Legal'
 /***********************************OBTENER DATOS DEL FORMULARIO Y DATOS CABECERA***********************************/
     if  (empty($_POST['txtDesdeFecha'])){$fechadesde='00/00/0000';}else{$fechadesde=$_POST['txtDesdeFecha'];}
     if  (empty($_POST['txtHastaFecha'])){$fechahasta='00/00/0000';}else{$fechahasta=$_POST['txtHastaFecha'];}
-    if  (empty($_POST['txtPuestos'])){$codigo_puesto=0;}else{$codigo_puesto=$_POST['txtPuestos'];}
-    if  (empty($_POST['txtEmblema'])){$codigo_emblema=0;}else{$codigo_emblema=$_POST['txtEmblema'];}
+    if  (empty($_POST['txtDepartamento'])){$departamento=0;}else{$departamento=$_POST['txtDepartamento'];}
     $conectate=pg_connect("host=localhost port=5432 dbname=SGR user=postgres password=postgres"
                     . "")or die ('Error al conectar a la base de datos');
-    $consulta=pg_exec($conectate,"select pues_des from puestos where pues_cod=$codigo_puesto"); 
+    $consulta=pg_exec($conectate,"select depar_desc as departamento from departamentos_unidad where depar_cod=$departamento"); 
     $row1 = pg_fetch_array($consulta);
-    $nombre_puesto=$row1['pues_des'];
+    $nombre_departamento=$row1['departamento'];
 /********************************************************************************************************************/
   
 //------------------------------------------------------------------------------      
-$pdf->AddPage('L', 'Legal');
+$pdf->AddPage('P', 'legal');
 $pdf->AliasNbPages();
 $pdf->SetFont('Arial','B',10);
 
-$consulta=pg_exec($conectate,"select em.em_des,pues.pues_des, pre.prec_destino,pre.prec_transportista,pre.cam_cod,pre.prec_cantprecinto,pre.prec_precio,to_char(pre.prec_fecha,'DD/MM/YYYY' ) as prec_fecha
-    from puestos pues,precintado pre,emblemas em
-    where pues.pues_cod=pre.pues_cod
-    and em.em_cod=pre.em_cod
-    and pre.prec_fecha>='$fechadesde' 
-    and pre.prec_fecha <= '$fechahasta'
-    and pues.pues_cod=$codigo_puesto
-    and em.em_cod=$codigo_emblema");
+$consulta=pg_exec($conectate,"select pro_nombre,reti_fecha,retidet_cantidad,retidet_cantidad_actual,en_nom || ' ' || en_ape as encargado from
+producto,retiro,retiro_detalle,encargado,departamentos_unidad,stock_detalle where
+producto.pro_cod=stock_detalle.pro_cod and
+retiro.en_cod=encargado.en_cod and 
+retiro.depar_cod=departamentos_unidad.depar_cod
+and stock_detalle.stockdet_cod=retiro_detalle.stockdet_cod
+and retiro.reti_cod=retiro_detalle.reti_cod and retiro.reti_fecha>='$fechadesde' and retiro.reti_fecha<='$fechahasta' and retiro.depar_cod=$departamento");
 
 $numregs=pg_numrows($consulta);
 $pdf->SetFont('Arial','',10);
@@ -145,23 +136,21 @@ $fill=false;
 $i=0;
 while($i<$numregs)
 {
-    $destino=pg_result($consulta,$i,'prec_destino');
-    $transportista=pg_result($consulta,$i,'prec_transportista');
-    $codigo_camion=pg_result($consulta,$i,'cam_cod');
-    $cantidad_precinto=pg_result($consulta,$i,'prec_cantprecinto');
-    $precio=pg_result($consulta,$i,'prec_precio');
-    $fecha=pg_result($consulta,$i,'prec_fecha');
+    $producto=pg_result($consulta,$i,'pro_nombre');
+    $fechareti=pg_result($consulta,$i,'reti_fecha');
+    $cantidad=pg_result($consulta,$i,'retidet_cantidad');
+    $cantidadactual=pg_result($consulta,$i,'retidet_cantidad_actual');
+    $encargado=pg_result($consulta,$i,'encargado');
    
-
     
-    $pdf->Cell(25,5,$i+1,1,0,'C',$fill);
-    $pdf->Cell(60,5,$destino,1,0,'L',$fill);
-    $pdf->Cell(60,5,$transportista,1,0,'L',$fill);
-    $pdf->Cell(50,5,$codigo_camion,1,0,'C',$fill);
-    $pdf->Cell(50,5,$fecha,1,0,'C',$fill);
-    $pdf->Cell(30,5,$cantidad_precinto,1,0,'C',$fill);
-    $pdf->Cell(30,5,$precio,1,1,'C',$fill);
     
+    
+    $pdf->Cell(15,5,$i+1,1,0,'C',$fill);
+    $pdf->Cell(70,5,$producto,1,0,'L',$fill);
+    $pdf->Cell(25,5,$fechareti,1,0,'C',$fill);
+    $pdf->Cell(30,5,$cantidad,1,0,'C',$fill);
+    $pdf->Cell(30,5,$cantidadactual,1,0,'C',$fill);
+    $pdf->Cell(55,5,$encargado,1,1,'L',$fill);
     $fill=!$fill;
     $i++;
 }
