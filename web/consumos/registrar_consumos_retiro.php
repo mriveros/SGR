@@ -75,7 +75,7 @@ if (!isset($_SESSION['codigo_usuario']))
             if ($catego == 1) {
                 include("../menu.php");
             } elseif ($catego == 2) {
-                include("../menu_usuario.php");
+                include("../menu_supervisor.php");
             } elseif ($catego == 3) {
                 include("../menu_supervisor.php");
             }

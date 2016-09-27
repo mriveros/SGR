@@ -37,7 +37,7 @@ if($n==0)
         if ($row['cat_cod']==1){
             header("Location:http://localhost/SGR/web/menu_principal.php");
         }else if($row['cat_cod']==2){
-            header("Location:http://localhost/SGR/web/menu_usuario.php");
+            header("Location:http://localhost/SGR/web/menu_supervisor.php");
         }else if($row['cat_cod']==3){
             header("Location:http://localhost/SGR/web/menu_supervisor.php");
         }
