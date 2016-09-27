@@ -4,6 +4,8 @@ if (!isset($_SESSION['codigo_usuario']))
     header("Location:http://localhost/SGR/login/acceso.html");
     $catego = $_SESSION["categoria_usuario"];
     $codigo_usuario = $_SESSION['codigo_usuario'];
+    $codigo_departamento =$_SESSION["codigo_departamento"]; 
+    $codigo_encargado=$_SESSION["codigo_encargado"];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -104,7 +106,7 @@ if (!isset($_SESSION['codigo_usuario']))
                                                 <th>Fecha</th>
                                                 <th>Encargado</th>
                                                 <th>Cantidad</th>
-                                                <!--<th>Acción</th>-->
+                                                
                                             </tr>
                                         </thead>
                                         <tbody></tr>
@@ -116,7 +118,9 @@ if (!isset($_SESSION['codigo_usuario']))
                                              and retdet.retidet_cod=con.retidet_cod
                                              and enc.en_cod=con.en_cod
                                              and ret.depar_cod=dep.depar_cod
-                                             and stdet.pro_cod=pro.pro_cod";
+                                             and stdet.pro_cod=pro.pro_cod
+                                             and enc.en_cod=$codigo_encargado";
+                                            
                                             $result = pg_query($query) or die("Error al realizar la consulta");
                                             while ($row1 = pg_fetch_array($result)) {
                                                 echo "<tr><td style='display:none'>".$row1["mig_cod"]."</td>";
@@ -124,12 +128,7 @@ if (!isset($_SESSION['codigo_usuario']))
                                                    echo "<td>".$row1["pro_nombre"]."</td>";
                                                    echo "<td>".$row1["con_fecha"]."</td>";
                                                    echo "<td>".$row1["encargado"]." ".$row1["en_ape"]."</td>";
-                                                   echo "<td>".$row1["con_cantidad"]."</td>";
-                                                    echo "<td>";
-                                                ?>
-                                            <!--<a onclick='eliminar(<?php echo $row1["con_cod"];?>)' class="btn btn-danger btn-xs active" data-toggle="modal" data-target="#modalbor" role="button">Borrar</a>-->
-                                                <?php
-                                            echo "</td></tr>";
+                                                   echo "<td>".$row1["con_cantidad"]."</td></tr>";
                                         }
                                         pg_free_result($result);
                                         ?>

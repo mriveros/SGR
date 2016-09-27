@@ -4,6 +4,8 @@ if (!isset($_SESSION['codigo_usuario']))
     header("Location:http://localhost/SGR/login/acceso.html");
     $catego = $_SESSION["categoria_usuario"];
     $codigo_usuario = $_SESSION['codigo_usuario'];
+    $codigo_departamento =$_SESSION["codigo_departamento"]; 
+     $codigo_encargado=$_SESSION["codigo_encargado"];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -110,14 +112,15 @@ if (!isset($_SESSION['codigo_usuario']))
                                         <tbody>
                                             <?php
                                             $query = "select mig_cod,pro_nombre as producto,depar_desc,mig_cantidad,mig_fecha,en_nom || ' ' || en_ape as encargado,
-                                      usu_username,retidet_cantidad_actual from producto,marca,departamentos_unidad,retiro_detalle,stock_detalle,migracion_producto,encargado,
-                                      usuarios where producto.mar_cod=marca.mar_cod 
-                                      and departamentos_unidad.depar_cod=migracion_producto.depar_cod 
-                                      and stock_detalle.pro_cod=producto.pro_cod 
-                                      and retiro_detalle.stockdet_cod=stock_detalle.stockdet_cod 
-                                      and migracion_producto.retidet_cod=retiro_detalle.retidet_cod 
-                                      and encargado.en_cod=migracion_producto.en_cod
-                                      and usuarios.usu_cod=migracion_producto.usu_cod ";
+                                            usu_username,retidet_cantidad_actual 
+                                            from producto,departamentos_unidad,retiro_detalle,stock_detalle,migracion_producto,encargado,usuarios 
+                                            where departamentos_unidad.depar_cod=migracion_producto.depar_cod 
+                                            and stock_detalle.pro_cod=producto.pro_cod 
+                                            and retiro_detalle.stockdet_cod=stock_detalle.stockdet_cod 
+                                            and migracion_producto.retidet_cod=retiro_detalle.retidet_cod 
+                                            and encargado.en_cod=migracion_producto.en_cod
+                                            and usuarios.usu_cod=migracion_producto.usu_cod
+                                            and migracion_producto.en_cod=$codigo_encargado";
                                             $result = pg_query($query) or die("Error al realizar la consulta");
                                             while ($row1 = pg_fetch_array($result)) {
                                                 echo "<tr><td style='display:none'>".$row1["mig_cod"]."</td>";

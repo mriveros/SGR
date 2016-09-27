@@ -23,8 +23,8 @@ $codusuario=  $_SESSION["codigo_usuario"];
                             window.location="http://localhost/SGR/web/migraciones/registrar_migracion.php";
 			 </script>';
                 }  else {   
-                $query = "INSERT INTO migracion_producto(mig_cantidad,mig_fecha,depar_cod,en_cod,retidet_cod,usu_cod)"
-                . "VALUES ($cantidad,now(),$departamento,$encargado,$codigo,$codusuario);";
+                $query = "INSERT INTO migracion_producto(mig_cantidad,mig_cantidad_actual,mig_fecha,depar_cod,en_cod,retidet_cod,usu_cod)"
+                . "VALUES ($cantidad,$cantidad,now(),$departamento,$encargado,$codigo,$codusuario);";
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al Migrar Producto. Err(108):'.$query.'");

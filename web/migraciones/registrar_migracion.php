@@ -4,7 +4,8 @@ if (!isset($_SESSION['codigo_usuario']))
     header("Location:http://localhost/SGR/login/acceso.html");
     $catego = $_SESSION["categoria_usuario"];
     $codigo_usuario = $_SESSION['codigo_usuario'];
-    $codigo_encargado = $_SESSION["codigo_encargado"]
+    $codigo_encargado = $_SESSION["codigo_encargado"];
+    $codigo_departamento =$_SESSION["codigo_departamento"];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -106,7 +107,7 @@ if (!isset($_SESSION['codigo_usuario']))
                                                 <th>Fecha</th>
                                                 <th>Encargado</th>
                                                 <th>Cantidad</th>
-                                                <th>Cantidad Actual del Producto</th>
+                                                <th>Cantidad Actual</th>
                                                 <th>Acción</th>
                                             </tr>
                                         </thead>
@@ -121,7 +122,8 @@ if (!isset($_SESSION['codigo_usuario']))
                                             and stock.stock_cod=stock_detalle.stock_cod 
                                             and producto.pro_cod=stock_detalle.pro_cod 
                                             and retiro_detalle.stockdet_cod=stock_detalle.stockdet_cod
-                                            and encargado.usu_cod=$codigo_usuario
+                                            and encargado.depar_cod=departamentos_unidad.depar_cod
+                                            and encargado.en_cod=$codigo_encargado
                                             and encargado.en_estado='t'";
                                             $result = pg_query($query) or die("Error al realizar la consulta");
                                             while ($row1 = pg_fetch_array($result)) {
