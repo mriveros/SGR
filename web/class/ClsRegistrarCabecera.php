@@ -10,6 +10,6 @@
                 //ejecucion del query
 $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al inserta la Cabecera Stock. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/stock/registrar_stock.php";
+                window.location="http://192.168.0.99/SGR/web/stock/registrar_stock.php";
 		</script>');
  ?>

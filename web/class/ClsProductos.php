@@ -34,7 +34,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
             if(func_existeDato($nombreA, 'producto', 'pro_nombre')==true){
                 echo '<script type="text/javascript">
 		alert("El Producto ya existe. Ingrese otro Producto.");
-                window.location="http://localhost/SGR/web/productos/ABMproducto.php";
+                window.location="http://192.168.0.99/SGR/web/productos/ABMproducto.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -43,10 +43,10 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al inserta el Producto. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/productos/ABMproducto.php";
+                window.location="http://192.168.0.99/SGR/web/productos/ABMproducto.php";
 		</script>');
                
-                header("Refresh:0; url=http://localhost/SGR/web/productos/ABMproducto.php");
+                header("Refresh:0; url=http://192.168.0.99/SGR/web/productos/ABMproducto.php");
                 }
             }
         //si es Modificar    
@@ -59,14 +59,14 @@ $codusuario=  $_SESSION["codigo_usuario"];
                     . "WHERE pro_cod=$codigoModif";
             $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al inserta el Producto. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/productos/ABMproducto.php";
+                window.location="http://192.168.0.99/SGR/web/productos/ABMproducto.php";
 		</script>');
-            header("Refresh:0; url=http://localhost/SGR/web/productos/ABMproducto.php");
+            header("Refresh:0; url=http://192.168.0.99/SGR/web/productos/ABMproducto.php");
         }
         //Si es Eliminar
         if(isset($_POST['borrar'])){
             pg_query("update producto set pro_estado='f' WHERE pro_cod=$codigoElim");
-            header("Refresh:0; url=http://localhost/SGR/web/productos/ABMproducto.php");
+            header("Refresh:0; url=http://192.168.0.99/SGR/web/productos/ABMproducto.php");
             
 	}
         

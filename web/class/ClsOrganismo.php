@@ -28,7 +28,7 @@ conexionlocal();
             if(func_existeDato($descripcionA, 'organismo', 'org_desc')==true){
                 echo '<script type="text/javascript">
 		alert("El Organismo ya existe. Ingrese otro Organismo.");
-                window.location="http://localhost/SGR/web/organismos/ABMorganismo.php";
+                window.location="http://192.168.0.99/SGR/web/organismos/ABMorganismo.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -36,10 +36,10 @@ conexionlocal();
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al insertar el Organismo. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/usuarios/ABMorganismo.php";
+                window.location="http://192.168.0.99/SGR/web/usuarios/ABMorganismo.php";
 		</script>');
                 $query = '';
-                header("Refresh:0; url=http://localhost/SGR/web/organismos/ABMorganismo.php");
+                header("Refresh:0; url=http://192.168.0.99/SGR/web/organismos/ABMorganismo.php");
                 }
             }
         //si es Modificar    
@@ -47,13 +47,13 @@ conexionlocal();
             $query = "update organismo set org_desc='$descripcionM',org_estado='$estadoM' WHERE org_cod=$codigoModif";
             $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al insertar el Organismo. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/usuarios/ABMorganismo.php";
+                window.location="http://192.168.0.99/SGR/web/usuarios/ABMorganismo.php";
 		</script>');
-            header("Refresh:0; url=http://localhost/SGR/web/organismos/ABMorganismo.php");
+            header("Refresh:0; url=http://192.168.0.99/SGR/web/organismos/ABMorganismo.php");
         }
         //Si es Eliminar
         if(isset($_POST['borrar'])){
             pg_query("update organismo set org_estado='f' WHERE org_cod=$codigoElim");
-            header("Refresh:0; url=http://localhost/SGR/web/organismos/ABMorganismo.php");
+            header("Refresh:0; url=http://192.168.0.99/SGR/web/organismos/ABMorganismo.php");
 	}
        

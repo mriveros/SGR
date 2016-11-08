@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['codigo_usuario']))
-    header("Location:http://localhost/SGR/login/acceso.html");
+    header("Location:http://192.168.0.99/SGR/login/acceso.html");
 $catego = $_SESSION["categoria_usuario"];
 $reg = $_POST['registrar'];
 ?>
@@ -66,18 +66,18 @@ $reg = $_POST['registrar'];
                 if (descripcion=="")
                 {
                     alert("Se debe llenar todos los campos");
-                    window.location="http://localhost/SGR/web/stock/registrar_stock.php";
+                    window.location="http://192.168.0.99/SGR/web/stock/registrar_stock.php";
                 }
                 else if(licitacion=="")
                 {
                     
                     alert("Se debe llenar todos los campos");
-                    window.location="http://localhost/SGR/web/stock/registrar_stock.php";
+                    window.location="http://192.168.0.99/SGR/web/stock/registrar_stock.php";
                 }
                 else if(lote=="")
                 {
                     alert("Se debe llenar todos los campos");
-                    window.location="http://localhost/SGR/web/stock/registrar_stock.php";
+                    window.location="http://192.168.0.99/SGR/web/stock/registrar_stock.php";
                 }
                 else{
                    $.ajax({type: "GET",url:"../class/ClsRegistrarCabecera.php",

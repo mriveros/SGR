@@ -34,7 +34,7 @@
             if(func_existeDato($username, 'usuarios', 'usu_username')==true){
                 echo '<script type="text/javascript">
 		alert("El Usuario ya existe. Intente ingresar otro Usuario");
-                window.location="http://localhost/SGR/web/usuarios/ABMusuario.php";
+                window.location="http://192.168.0.99/SGR/web/usuarios/ABMusuario.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -43,10 +43,10 @@
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al inserta el usuario. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/usuarios/ABMusuario.php";
+                window.location="http://192.168.0.99/SGR/web/usuarios/ABMusuario.php";
 		</script>');
                 $query = '';
-                header("Refresh:0; url=http://localhost/SGR/web/usuarios/ABMusuario.php");
+                header("Refresh:0; url=http://192.168.0.99/SGR/web/usuarios/ABMusuario.php");
                 }
             }
         //si es Modificar    
@@ -54,13 +54,13 @@
             $query = "update usuarios set usu_nom='$nombreM',usu_ape= '$apellidoM',usu_username='$usernameM',usu_pass=md5('$passwordM'),usu_estado='$activoM',cat_cod=$categoriaM WHERE usu_cod=$codigoModif";
             $ejecucion = pg_query($query) or die('<script type="text/javascript">
             alert("Error al inserta el usuario. Err(108):'.$query.$codigoModif.'");
-            window.location="http://localhost/SGR/web/usuarios/ABMusuario.php";
+            window.location="http://192.168.0.99/SGR/web/usuarios/ABMusuario.php";
             </script>');
            
-            header("Refresh:0; url=http://localhost/SGR/web/usuarios/ABMusuario.php");
+            header("Refresh:0; url=http://192.168.0.99/SGR/web/usuarios/ABMusuario.php");
         }
         //Si es Eliminar
         if(isset($_POST['borrar'])){
             pg_query("update usuarios set usu_estado='f' WHERE usu_cod=$codigoElim");
-            header("Refresh:0; url=http://localhost/SGR/web/usuarios/ABMusuario.php");
+            header("Refresh:0; url=http://192.168.0.99/SGR/web/usuarios/ABMusuario.php");
 	}

@@ -26,7 +26,7 @@
             if(func_existeDato($descripcionA, 'marca', 'mar_desc')==true){
                 echo '<script type="text/javascript">
 		alert("La marca ya existe. Intente ingresar otra marca");
-                window.location="http://localhost/SGR/web/marcas/ABMmarca.php";
+                window.location="http://192.168.0.99/SGR/web/marcas/ABMmarca.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -35,10 +35,10 @@
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al insertar la marca. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/marcas/ABMmarca.php";
+                window.location="http://192.168.0.99/SGR/web/marcas/ABMmarca.php";
 		</script>');
                 $query = '';
-                header("Refresh:0; url=http://localhost/SGR/web/marcas/ABMmarca.php");
+                header("Refresh:0; url=http://192.168.0.99/SGR/web/marcas/ABMmarca.php");
                 }
             }
         //si es Modificar    
@@ -46,13 +46,13 @@
             $query = "update marca set mar_desc='$descripcionM',mar_estado='$activoM' WHERE mar_cod=$codigoModif";
             $ejecucion = pg_query($query) or die('<script type="text/javascript">
             alert("Error al modificar la marca. Err(108):'.$query.$codigoModif.'");
-            window.location="http://localhost/SGR/web/marcas/ABMmarca.php";
+            window.location="http://192.168.0.99/SGR/web/marcas/ABMmarca.php";
             </script>');
            
-            header("Refresh:0; url=http://localhost/SGR/web/marcas/ABMmarca.php");
+            header("Refresh:0; url=http://192.168.0.99/SGR/web/marcas/ABMmarca.php");
         }
         //Si es Eliminar
         if(isset($_POST['borrar'])){
             pg_query("update marca set mar_estado='f' WHERE mar_cod=$codigoElim");
-            header("Refresh:0; url=http://localhost/SGR/web/marcas/ABMmarca.php");
+            header("Refresh:0; url=http://192.168.0.99/SGR/web/marcas/ABMmarca.php");
 	}

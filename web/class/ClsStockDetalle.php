@@ -27,16 +27,16 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al insertar el Stock Detalle. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/stock/StockDetalle.php";
+                window.location="http://192.168.0.99/SGR/web/stock/StockDetalle.php";
 		</script>');
-                header("Refresh:0; url=http://localhost/SGR/web/stock/StockDetalle.php");
+                header("Refresh:0; url=http://192.168.0.99/SGR/web/stock/StockDetalle.php");
             }
         if(isset($_POST['borrar'])){
             $query=("delete from stock_detalle WHERE stockdet_cod=$codigoElim");
             $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al BORRAR el Stock Detalle. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/stock/StockDetalle.php";
+                window.location="http://192.168.0.99/SGR/web/stock/StockDetalle.php";
 		</script>');
-            header("Refresh:0; url=http://localhost/SGR/web/stock/StockDetalle.php");
+            header("Refresh:0; url=http://192.168.0.99/SGR/web/stock/StockDetalle.php");
 	}
         

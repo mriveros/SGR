@@ -23,7 +23,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
                     if($cantidadactual<$cantidadA){
                         echo '<script type="text/javascript">
 			alert("la Cantidad ingresada supera el Stock actual del Retiro a realizar. Debe ser menor a '.$cantidadactual.'");
-                            window.location="http://localhost/SGR/web/retiros/Retiro_Detalles.php";
+                            window.location="http://192.168.0.99/SGR/web/retiros/Retiro_Detalles.php";
 			 </script>';
                     }  else {   
                 $query = "INSERT INTO retiro_detalle(reti_cod,retidet_cantidad,retidet_cantidad_actual,stockdet_cod)"
@@ -31,12 +31,12 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al insertar el Retiro Detalle. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/retiros/Retiro_Detalles.php";
+                window.location="http://192.168.0.99/SGR/web/retiros/Retiro_Detalles.php";
 		</script>');
                 $actualizar= "update stock_detalle set stockdet_actual=(stockdet_actual-$cantidadA) where stockdet_cod=$stockdetA";
                 $eje = pg_query($actualizar)or die('Error al actualizar Stock Actual');
                 $actualizar= '';
-                header("Refresh:0; url=http://localhost/SGR/web/retiros/Retiro_Detalles.php");
+                header("Refresh:0; url=http://192.168.0.99/SGR/web/retiros/Retiro_Detalles.php");
                 }
             }
         if(isset($_POST['borrar'])){
@@ -46,11 +46,11 @@ $codusuario=  $_SESSION["codigo_usuario"];
             $query=("delete from retiro_detalle WHERE retidet_cod=$codigoElim");
             $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al BORRAR el Retiro Detalle. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/retiros/Retiro_Detalles.php";
+                window.location="http://192.168.0.99/SGR/web/retiros/Retiro_Detalles.php";
 		</script>');
             $actualizar= "update stock_detalle set stockdet_actual=(stockdet_actual+$cantidad) where stockdet_cod=$coddetallestock";
                 $eje = pg_query($actualizar)or die('Error al actualizar Stock Actual'.$actualizar);
                 $actualizar= '';
-            header("Refresh:0; url=http://localhost/SGR/web/retiros/Retiro_Detalles.php");
+            header("Refresh:0; url=http://192.168.0.99/SGR/web/retiros/Retiro_Detalles.php");
 	}
         

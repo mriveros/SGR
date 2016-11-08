@@ -25,7 +25,7 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 if($cantidadactual<$cantidad){
                         echo '<script type="text/javascript">
 			alert("La Cantidad Ingresada supera el Stock actual del Producto que desea Consumir. Debe ser menor a '.$cantidadactual.'");
-                            window.location="http://localhost/SGR/web/consumos/registrar_consumos_migracion.php";
+                            window.location="http://192.168.0.99/SGR/web/consumos/registrar_consumos_migracion.php";
 			 </script>';
                 }  else {   
                 $query = "INSERT INTO consumos(retidet_cod,en_cod,con_cantidad,con_fecha,con_estado)"
@@ -33,12 +33,12 @@ $codusuario=  $_SESSION["codigo_usuario"];
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al Consumir Producto. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/consumos/registrar_consumos_migracion.php";
+                window.location="http://192.168.0.99/SGR/web/consumos/registrar_consumos_migracion.php";
 		</script>');
                 $actualizar= "update migracion_producto set mig_cantidad_actual=(mig_cantidad_actual-$cantidad) where mig_cod=$codigo";
                 $eje = pg_query($actualizar)or die('Error al actualizar Cantidad Actual'.$actualizar);
                 $actualizar= '';
-                header("Refresh:0; url=http://localhost/SGR/web/consumos/registrar_consumos_migracion.php");
+                header("Refresh:0; url=http://192.168.0.99/SGR/web/consumos/registrar_consumos_migracion.php");
                 }
             }
 //             if(isset($_POST['borrar'])){
@@ -47,12 +47,12 @@ $codusuario=  $_SESSION["codigo_usuario"];
 //                $query=("delete from migracion_producto WHERE mig_cod=$codigoElim");
 //                $ejecucion = pg_query($query)or die('<script type="text/javascript">
 //		alert("Error al BORRAR el Producto Migrado. Err(108):'.$query.'");
-//                window.location="http://localhost/SGR/web/migraciones/reactivos_migrados.php";
+//                window.location="http://192.168.0.99/SGR/web/migraciones/reactivos_migrados.php";
 //		</script>');
 //                $actualizar= "update retiro_detalle set retidet_cantidad_actual=(retidet_cantidad_actual+$cantidad) where retidet_cod=$coddetalleretiro";
 //                $eje = pg_query($actualizar)or die('Error al actualizar Cantidad Actual'.$actualizar);
 //                $actualizar= '';
-//                header("Refresh:0; url=http://localhost/SGR/web/migraciones/reactivos_migrados.php");
+//                header("Refresh:0; url=http://192.168.0.99/SGR/web/migraciones/reactivos_migrados.php");
 //	}
        
     ?>    

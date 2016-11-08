@@ -43,7 +43,7 @@
     </script>
 	<script type="text/javascript">
 		/*function Redirigir(){
-			window.location="http://localhost/SGR/web/stock/registrar_stock.php";
+			window.location="http://192.168.0.99/SGR/web/stock/registrar_stock.php";
 		};
                 */
                 function eliminar(codigo){

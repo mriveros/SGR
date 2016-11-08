@@ -26,7 +26,7 @@
             if(func_existeDato($descripcionA, 'dependencia', 'depen_desc')==true){
                 echo '<script type="text/javascript">
 		alert("La dependencia ya existe. Intente ingresar otra Dependencia");
-                window.location="http://localhost/SGR/web/dependencia/ABMdependencia.php";
+                window.location="http://192.168.0.99/SGR/web/dependencia/ABMdependencia.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -35,10 +35,10 @@
                 //ejecucion del query 
                 $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al insertar la dependencia. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/dependencia/ABMdependencia.php";
+                window.location="http://192.168.0.99/SGR/web/dependencia/ABMdependencia.php";
 		</script>');
                 $query = '';
-                header("Refresh:0; url=http://localhost/SGR/web/dependencia/ABMdependencia.php");
+                header("Refresh:0; url=http://192.168.0.99/SGR/web/dependencia/ABMdependencia.php");
                 }
             }
         //si es Modificar    
@@ -46,13 +46,13 @@
             $query = "update dependencia set depen_desc='$descripcionM',depen_estado='$activoM' WHERE depen_cod=$codigoModif";
             $ejecucion = pg_query($query) or die('<script type="text/javascript">
             alert("Error al modificar la dependencia. Err(108):'.$query.$codigoModif.'");
-            window.location="http://localhost/SGR/web/dependencia/ABMdependencia.php";
+            window.location="http://192.168.0.99/SGR/web/dependencia/ABMdependencia.php";
             </script>');
            
-            header("Refresh:0; url=http://localhost/SGR/web/dependencia/ABMdependencia.php");
+            header("Refresh:0; url=http://192.168.0.99/SGR/web/dependencia/ABMdependencia.php");
         }
         //Si es Eliminar
         if(isset($_POST['borrar'])){
             pg_query("update dependencia set depen_estado='f' WHERE depen_cod=$codigoElim");
-            header("Refresh:0; url=http://localhost/SGR/web/dependencia/ABMdependencia.php");
+            header("Refresh:0; url=http://192.168.0.99/SGR/web/dependencia/ABMdependencia.php");
 	}

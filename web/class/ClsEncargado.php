@@ -34,7 +34,7 @@
             if(func_existeDato($nombreA, 'encargado', 'en_nom')==true){
                 echo '<script type="text/javascript">
 		alert("El Encargado ya existe. Intente ingresar otro Encargado");
-                window.location="http://localhost/SGR/web/encargados/ABMencargado.php";
+                window.location="http://192.168.0.99/SGR/web/encargados/ABMencargado.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -43,10 +43,10 @@
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al insertar el encargado. Err(108):'.$query.'");
-                window.location="http://localhost/SGR/web/encargados/ABMencargado.php";
+                window.location="http://192.168.0.99/SGR/web/encargados/ABMencargado.php";
 		</script>');
                 $query = '';
-                header("Refresh:0; url=http://localhost/SGR/web/encargados/ABMencargado.php");
+                header("Refresh:0; url=http://192.168.0.99/SGR/web/encargados/ABMencargado.php");
                 }
             }
         //si es Modificar    
@@ -54,13 +54,13 @@
             $query = "update encargado set  en_nom='$nombreM',en_ape= '$apellidoM',en_estado='$activoM',org_cod=$organismoM,depar_cod=$departamentoM,usu_cod=$UsuarioM WHERE en_cod=$codigoModif";
             $ejecucion = pg_query($query) or die('<script type="text/javascript">
             alert("Error al modificar el encargado. Err(108):'.$query.$codigoModif.'");
-            window.location="http://localhost/SGR/web/encargados/ABMencargado.php";
+            window.location="http://192.168.0.99/SGR/web/encargados/ABMencargado.php";
             </script>');
            
-            header("Refresh:0; url=http://localhost/SGR/web/encargados/ABMencargado.php");
+            header("Refresh:0; url=http://192.168.0.99/SGR/web/encargados/ABMencargado.php");
         }
         //Si es Eliminar
         if(isset($_POST['borrar'])){
             pg_query("update encargado set en_estado='f' WHERE en_cod=$codigoElim");
-            header("Refresh:0; url=http://localhost/SGR/web/encargados/ABMencargado.php");
+            header("Refresh:0; url=http://192.168.0.99/SGR/web/encargados/ABMencargado.php");
 	}

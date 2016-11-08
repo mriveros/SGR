@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['codigo_usuario']))
-    header("Location:http://localhost/SGR/login/acceso.html");
+    header("Location:http://192.168.0.99/SGR/login/acceso.html");
     $catego = $_SESSION["categoria_usuario"];
     $codigo_usuario = $_SESSION['codigo_usuario'];
 
@@ -32,8 +32,8 @@ if(isset($_POST['borrar'])){
             $query=("delete from retiro WHERE reti_cod=$codigoElim");
             $ejecucion = pg_query($query)or die('<script type="text/javascript">
             alert("Error al borrar Stock. Err(108):'.$query.'");
-            window.location="http://localhost/SGR/web/retiros/registrar_retiros.php";
+            window.location="http://192.168.0.99/SGR/web/retiros/registrar_retiros.php";
             </script>');
-            header("Refresh:0; url=http://localhost/SGR/web/retiros/registrar_retiros.php");  
+            header("Refresh:0; url=http://192.168.0.99/SGR/web/retiros/registrar_retiros.php");  
        }
  ?>
