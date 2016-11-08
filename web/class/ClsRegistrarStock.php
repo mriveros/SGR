@@ -21,7 +21,7 @@ if  (empty($_POST['txtCodigoE'])){$codigoElim=0;}else{$codigoElim=$_POST['txtCod
             if(func_existeDato($lote, 'stock', 'stock_lote')==true){
                 echo '<script type="text/javascript">
 		alert("El Lote ya existe. Ingrese otro Lote.");
-                window.location="http://192.168.0.99/SGR/web/stock/registrar_stock.php";
+                window.location="http://aplicaciones.intn.gov.py/SGR/web/stock/registrar_stock.php";
 		</script>';
                 }
                 else{
@@ -31,18 +31,18 @@ if  (empty($_POST['txtCodigoE'])){$codigoElim=0;}else{$codigoElim=$_POST['txtCod
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al inserta la Cabecera Stock. Err(108):'.$query.'");
-                window.location="http://192.168.0.99/SGR/web/stock/registrar_stock.php";
+                window.location="http://aplicaciones.intn.gov.py/SGR/web/stock/registrar_stock.php";
 		</script>');
-                //header("Refresh:0; url=http://192.168.0.99/SGR/web/stock/registrar_stock.php");
+                //header("Refresh:0; url=http://aplicaciones.intn.gov.py/SGR/web/stock/registrar_stock.php");
                 }
             }
     if(isset($_POST['borrar'])){
             $query=("delete from stock WHERE stock_cod=$codigoElim");
              $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al borrar Stock. Err(108):'.$query.'");
-                window.location="http://192.168.0.99/SGR/web/stock/registrar_stock.php";
+                window.location="http://aplicaciones.intn.gov.py/SGR/web/stock/registrar_stock.php";
 		</script>');
-            header("Refresh:0; url=http://192.168.0.99/SGR/web/stock/registrar_stock.php");
+            header("Refresh:0; url=http://aplicaciones.intn.gov.py/SGR/web/stock/registrar_stock.php");
             
 	}
         

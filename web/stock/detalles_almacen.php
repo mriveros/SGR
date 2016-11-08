@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['codigo_usuario']))
-header("Location:http://192.168.0.99/SGR/login/acceso.html"); 
+header("Location:http://aplicaciones.intn.gov.py/SGR/login/acceso.html"); 
 $catego=  $_SESSION["categoria_usuario"];
 
 ?>
@@ -53,7 +53,7 @@ $catego=  $_SESSION["categoria_usuario"];
         });
     });
     function redireccionar(){
-         window.location="http://192.168.0.99/SGR/web/stock/gestion_almacen.php";
+         window.location="http://aplicaciones.intn.gov.py/SGR/web/stock/gestion_almacen.php";
     }
     </script>
 	

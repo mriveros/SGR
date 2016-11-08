@@ -1,5 +1,5 @@
 <?php 
-    $conectate=pg_connect("host=localhost port=5432 dbname=SGR user=postgres password=postgres")or die ('Error al conectar a la base de datos');
+    $conectate=pg_connect("host=localhost port=5432 dbname=SGR user=postgres password=postgres_server")or die ('Error al conectar a la base de datos');
    
 ?>
 <!DOCTYPE html>
@@ -43,7 +43,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="http://192.168.0.99/SGR/web/img/head.png" width=500 height=80 alt="Obra de K. Haring"> 
+                <img src="http://aplicaciones.intn.gov.py/SGR/web/img/head.png" width=500 height=80 alt="Obra de K. Haring"> 
             </div>
             <center><a class="navbar-brand" href="#"><h2>Sistema de Gestion de Reactivos - SGR INTN</h2></a></center>
             <!-- /.navbar-header -->
@@ -116,8 +116,8 @@
                 </li>
                 
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://192.168.0.99/SGR/web/logout.php">
-                        <i class="fa fa-user fa-fw"  href="http://192.168.0.99/SGR/web/logout.php"></i> <?php echo "USUARIO"//$_SESSION['usernom']." ".$_SESSION['userape']; ?> <i class="fa fa-caret-down"></i>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://aplicaciones.intn.gov.py/SGR/web/logout.php">
+                        <i class="fa fa-user fa-fw"  href="http://aplicaciones.intn.gov.py/SGR/web/logout.php"></i> <?php echo "USUARIO"//$_SESSION['usernom']." ".$_SESSION['userape']; ?> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a data-toggle="modal" data-target="#modalpassword"><i class="fa fa-user fa-fw"></i> Cambiar Contraseña</a>
@@ -125,7 +125,7 @@
                         <li><a><i class="fa fa-gear fa-fw"></i> Configuración</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="http://192.168.0.99/SGR/web/logout.php"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesion</a>
+                        <li><a href="http://aplicaciones.intn.gov.py/SGR/web/logout.php"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesion</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -138,13 +138,13 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="http://192.168.0.99/SGR/web/menu_principal.php" value="Load new document" onclick="location.reload();"><i class="fa  fa-tasks"></i> Menu Principal</a>
+                            <a href="http://aplicaciones.intn.gov.py/SGR/web/menu_principal.php" value="Load new document" onclick="location.reload();"><i class="fa  fa-tasks"></i> Menu Principal</a>
                         </li>
 			<li>
                             <a href="#"><i class="fa fa-user"></i> USUARIOS<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://192.168.0.99/SGR/web/usuarios/ABMusuario.php">Registros de Usuarios</a>
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/usuarios/ABMusuario.php">Registros de Usuarios</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -153,7 +153,7 @@
                             <a href="#"><i class="fa  fa-users"></i> CATEGORÍAS<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://192.168.0.99/SGR/web/categorias/ABMcategoria.php"> Registros de Categorias</a>
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/categorias/ABMcategoria.php"> Registros de Categorias</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -162,7 +162,7 @@
                             <a href="#"><i class="fa  fa-home "></i> DEPARTAMENTOS<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://192.168.0.99/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php">Registros de Departamentos</a>
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php">Registros de Departamentos</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -171,7 +171,7 @@
                             <a href="#"><i class="fa fa-minus"></i> DEPENDENCIAS<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://192.168.0.99/SGR/web/dependencia/ABMdependencia.php">Registros de Dependencias</a>
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/dependencia/ABMdependencia.php">Registros de Dependencias</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -180,7 +180,7 @@
                             <a href="#"><i class="fa  fa-flickr "></i> ENCARGADOS<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://192.168.0.99/SGR/web/encargados/ABMencargado.php">Registros de Encargados</a>
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/encargados/ABMencargado.php">Registros de Encargados</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -189,7 +189,7 @@
                             <a href="#"><i class="fa   fa-pencil"></i> ORGANISMOS<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://192.168.0.99/SGR/web/organismos/ABMorganismo.php">Registros de Organismos</a>
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/organismos/ABMorganismo.php">Registros de Organismos</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -198,7 +198,7 @@
                             <a href="#"><i class="fa  fa-cubes"></i> PRESENTACIÓN<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://192.168.0.99/SGR/web/presentacion/ABMpresentacion.php">Registros de Presentación</a>
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/presentacion/ABMpresentacion.php">Registros de Presentación</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -207,7 +207,7 @@
                             <a href="#"><i class="fa  fa-magic"></i> MARCAS<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://192.168.0.99/SGR/web/marcas/ABMmarca.php">Registros de Marcas</a>
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/marcas/ABMmarca.php">Registros de Marcas</a>
                                 </li>
                                 
                             </ul> 
@@ -216,7 +216,7 @@
                             <a href="#"><i class="fa  fa-bank"></i> PRODUCTOS<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://192.168.0.99/SGR/web/productos/ABMproducto.php">Registros de Productos</a>
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/productos/ABMproducto.php">Registros de Productos</a>
                                 </li>
                                 
                             </ul> 
@@ -226,8 +226,8 @@
                             <a href="#"><i class="fa  fa-hand-o-right "></i>  STOCK<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://192.168.0.99/SGR/web/stock/registrar_stock.php">Gestión de Stock</a>
-                                    <a href="http://192.168.0.99/SGR/web/stock/gestion_almacen.php">Gestión de Almacenes</a>
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/stock/registrar_stock.php">Gestión de Stock</a>
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/stock/gestion_almacen.php">Gestión de Almacenes</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -237,8 +237,8 @@
                             <ul class="nav nav-second-level">
                                 <li>
                                  
-                                    <a href="http://192.168.0.99/SGR/web/retiros/registrar_retiros.php">Retiro de Reactivos</a>
-                                     <a href="http://192.168.0.99/SGR/web/retiros/detalle_retiros.php">Detalle Retiro de Reactivos</a>
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/retiros/registrar_retiros.php">Retiro de Reactivos</a>
+                                     <a href="http://aplicaciones.intn.gov.py/SGR/web/retiros/detalle_retiros.php">Detalle Retiro de Reactivos</a>
                                 </li>
                             </ul>
                              
@@ -249,8 +249,8 @@
                             <a href="#"><i class="fa  fa-exclamation-circle "></i>  REGISTRAR MIGRACION<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://192.168.0.99/SGR/web/migraciones/registrar_migracion.php">Migración de Reactivos</a>
-                                    <a href="http://192.168.0.99/SGR/web/migraciones/reactivos_migrados.php">Reactivos Migrados</a>
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/migraciones/registrar_migracion.php">Migración de Reactivos</a>
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/migraciones/reactivos_migrados.php">Reactivos Migrados</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -259,9 +259,9 @@
                             <a href="#"><i class="fa  fa-bookmark"></i>  REGISTRAR CONSUMOS<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                   <a href="http://192.168.0.99/SGR/web/consumos/registrar_consumos_retiro.php">Registrar Consumos Retiro</a>
-                                   <a href="http://192.168.0.99/SGR/web/consumos/registrar_consumos_migracion.php">Registrar Consumos Migración</a>
-                                   <a href="http://192.168.0.99/SGR/web/consumos/detalle_consumos.php">Productos Consumidos</a>
+                                   <a href="http://aplicaciones.intn.gov.py/SGR/web/consumos/registrar_consumos_retiro.php">Registrar Consumos Retiro</a>
+                                   <a href="http://aplicaciones.intn.gov.py/SGR/web/consumos/registrar_consumos_migracion.php">Registrar Consumos Migración</a>
+                                   <a href="http://aplicaciones.intn.gov.py/SGR/web/consumos/detalle_consumos.php">Productos Consumidos</a>
                                 </li>
                             </ul>
                              
@@ -274,11 +274,11 @@
                             <a href="#"><i class="fa  fa-file-text "></i> INFORMES<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                     <a href="http://192.168.0.99/SGR/web/informes/Frm_Reactivos_Encargados.php">Resumen por Encargados</a>
-                                    <a href="http://192.168.0.99/SGR/web/informes/Frm_Reactivos_Departamentos.php">Resumen por Departamentos/Unidad</a> 
-                                    <a href="http://192.168.0.99/SGR/web/informes/Frm_Reactivos_Migrados.php">Resumen Migración</a> 
-                                    <a href="http://192.168.0.99/SGR/web/informes/Frm_Retiros_Consumidos.php">Resumen Consumo de Retiro</a>
-                                    <a href="http://192.168.0.99/SGR/web/informes/Frm_Migraciones_Consumidos.php">Resumen Consumo de Migración</a>
+                                     <a href="http://aplicaciones.intn.gov.py/SGR/web/informes/Frm_Reactivos_Encargados.php">Resumen por Encargados</a>
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/informes/Frm_Reactivos_Departamentos.php">Resumen por Departamentos/Unidad</a> 
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/informes/Frm_Reactivos_Migrados.php">Resumen Migración</a> 
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/informes/Frm_Retiros_Consumidos.php">Resumen Consumo de Retiro</a>
+                                    <a href="http://aplicaciones.intn.gov.py/SGR/web/informes/Frm_Migraciones_Consumidos.php">Resumen Consumo de Migración</a>
                                 </li>
                                
                                     

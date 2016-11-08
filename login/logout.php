@@ -1,5 +1,5 @@
 <?php 
 	session_start(); 
 	session_destroy(); 
-	header("Location:http://192.168.0.99/SGR/login/acceso.html");
+	header("Location:http://aplicaciones.intn.gov.py/SGR/login/acceso.html");
 ?>

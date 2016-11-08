@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['codigo_usuario']))
-    header("Location:http://192.168.0.99/SGR/login/acceso.html");
+    header("Location:http://aplicaciones.intn.gov.py/SGR/login/acceso.html");
     $catego = $_SESSION["categoria_usuario"];
     $codigo_usuario = $_SESSION['codigo_usuario'];
 
@@ -16,6 +16,6 @@ if (!isset($_SESSION['codigo_usuario']))
                 //ejecucion del query
 $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al insertar la Cabecera Retiro. Err(108):'.$query.'");
-                window.location="http://192.168.0.99/SGR/web/retiros/registrar_retiros.php";
+                window.location="http://aplicaciones.intn.gov.py/SGR/web/retiros/registrar_retiros.php";
 		</script>');
  ?>

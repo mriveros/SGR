@@ -23,7 +23,7 @@ if($n==0)
     {
         echo '<script type="text/javascript">
         alert("Nombre de Usuario o Password no valido..!");
-        window.location="http://192.168.0.99/SGR/login/acceso.html";
+        window.location="http://aplicaciones.intn.gov.py/SGR/login/acceso.html";
         </script>';
     }
     else
@@ -35,10 +35,10 @@ if($n==0)
         $_SESSION["codigo_departamento"] = $row['depar_cod'];
         $_SESSION["categoria_usuario"]=$row['cat_cod'];
         if ($row['cat_cod']==1){
-            header("Location:http://192.168.0.99/SGR/web/menu_principal.php");
+            header("Location:http://aplicaciones.intn.gov.py/SGR/web/menu_principal.php");
         }else if($row['cat_cod']==2){
-            header("Location:http://192.168.0.99/SGR/web/menu_supervisor.php");
+            header("Location:http://aplicaciones.intn.gov.py/SGR/web/menu_supervisor.php");
         }else if($row['cat_cod']==3){
-            header("Location:http://192.168.0.99/SGR/web/menu_supervisor.php");
+            header("Location:http://aplicaciones.intn.gov.py/SGR/web/menu_supervisor.php");
         }
     }

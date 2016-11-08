@@ -9,7 +9,7 @@
         <?php
         function conexionlocal()
         {
-            return $dbconn = pg_connect("host=localhost port=5432 dbname=SGR user=postgres password=postgres "
+            return $dbconn = pg_connect("host=localhost port=5432 dbname=SGR user=postgres password=postgres_server "
                     . "")or die ('no se pudo conectar a la base de datos');
         } 
         //funcion que selecciona a la base de Datos
@@ -47,7 +47,7 @@
                 $query = pg_query("delete from precintado where prec_cod=$codigo_precintado");
                 echo '<script type="text/javascript">
 		alert("El Precinto ya ha sido usado o no existe. Vuelva a Generar el Registro");
-                window.location="http://192.168.0.99/SGR/web/registrar_precintos/registrar_precintos.php";
+                window.location="http://aplicaciones.intn.gov.py/SGR/web/registrar_precintos/registrar_precintos.php";
 		</script>';
             }
             return $row1[0];

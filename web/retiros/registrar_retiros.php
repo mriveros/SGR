@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['codigo_usuario']))
-    header("Location:http://192.168.0.99/SGR/login/acceso.html");
+    header("Location:http://aplicaciones.intn.gov.py/SGR/login/acceso.html");
     $catego = $_SESSION["categoria_usuario"];
     $codigo_usuario = $_SESSION['codigo_usuario'];
 ?>
@@ -67,18 +67,18 @@ if (!isset($_SESSION['codigo_usuario']))
                 if (observacion=="")
                 {
                     alert("Se debe llenar todos los campos");
-                    window.location="http://192.168.0.99/SGR/web/retiros/registrar_retiros.php";
+                    window.location="http://aplicaciones.intn.gov.py/SGR/web/retiros/registrar_retiros.php";
                 }
                 else if(encargado=="")
                 {
                     
                     alert("Se debe llenar todos los campos");
-                    window.location="http://192.168.0.99/SGR/web/retiros/registrar_retiros.php";
+                    window.location="http://aplicaciones.intn.gov.py/SGR/web/retiros/registrar_retiros.php";
                 }
                 else if(departamento=="")
                 {
                     alert("Se debe llenar todos los campos");
-                     window.location="http://192.168.0.99/SGR/web/retiros/registrar_retiros.php";
+                     window.location="http://aplicaciones.intn.gov.py/SGR/web/retiros/registrar_retiros.php";
                 }
                 else{
                    $.ajax({type: "GET",url:"../class/ClsRegistrarRetiroCabecera.php",

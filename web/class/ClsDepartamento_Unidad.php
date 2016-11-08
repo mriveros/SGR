@@ -30,7 +30,7 @@ conexionlocal();
             if(func_existeDato($descripcionA, 'departamentos_unidad', 'depar_desc')==true){
                 echo '<script type="text/javascript">
 		alert("El Departamento/UNidad ya existe. Ingrese otro Departamento/Unidad.");
-                window.location="http://192.168.0.99/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php";
+                window.location="http://aplicaciones.intn.gov.py/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php";
 		</script>';
                 }else{              
                 //se define el Query   
@@ -38,10 +38,10 @@ conexionlocal();
                 //ejecucion del query
                 $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al insertar el Departamento/Unidad. Err(108):'.$query.'");
-                window.location="http://192.168.0.99/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php";
+                window.location="http://aplicaciones.intn.gov.py/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php";
 		</script>');
                 $query = '';
-                header("Refresh:0; url=http://192.168.0.99/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php");
+                header("Refresh:0; url=http://aplicaciones.intn.gov.py/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php");
                 }
             }
         //si es Modificar    
@@ -49,13 +49,13 @@ conexionlocal();
             $query = "update departamentos_unidad set depar_desc='$descripcionM',depen_cod=$dependenciaM,depar_estado='$estadoM' WHERE depar_cod=$codigoModif";
             $ejecucion = pg_query($query)or die('<script type="text/javascript">
 		alert("Error al insertar el Departamento/Unidad. Err(108):'.$query.'");
-                window.location="http://192.168.0.99/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php";
+                window.location="http://aplicaciones.intn.gov.py/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php";
 		</script>');
-            header("Refresh:0; url=http://192.168.0.99/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php");
+            header("Refresh:0; url=http://aplicaciones.intn.gov.py/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php");
         }
         //Si es Eliminar
         if(isset($_POST['borrar'])){
             pg_query("update departamentos_unidad set depar_estado='f' WHERE depar_cod=$codigoElim");
-            header("Refresh:0; url=http://192.168.0.99/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php");
+            header("Refresh:0; url=http://aplicaciones.intn.gov.py/SGR/web/departamentos_unidades/ABMdepartamento_unidad.php");
 	}
        
