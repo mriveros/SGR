@@ -9,7 +9,7 @@
         <?php
         function conexionlocal()
         {
-            return $dbconn = pg_connect("host=localhost port=5432 dbname=SGR user=postgres password=postgres_server "
+            return $dbconn = pg_connect("host=192.168.0.18 port=5432 dbname=SGR user=postgres password=postgres_server "
                     . "")or die ('no se pudo conectar a la base de datos');
         } 
         //funcion que selecciona a la base de Datos

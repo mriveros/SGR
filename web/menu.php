@@ -1,5 +1,5 @@
 <?php 
-    $conectate=pg_connect("host=localhost port=5432 dbname=SGR user=postgres password=postgres_server")or die ('Error al conectar a la base de datos');
+    $conectate=pg_connect("host=192.168.0.18 port=5432 dbname=SGR user=postgres password=postgres_server")or die ('Error al conectar a la base de datos');
    
 ?>
 <!DOCTYPE html>
